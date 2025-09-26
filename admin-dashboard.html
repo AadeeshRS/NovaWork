@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Employee Salary Management System</title>
+    <link rel="stylesheet" href="styles/base.css">
+    <style>
+        .admin-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+        }
+
+        .admin-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .admin-subtitle {
+            opacity: 0.9;
+            font-size: 1.125rem;
+        }
+
+        .admin-nav {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .admin-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        .admin-nav a {
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .admin-nav a:hover,
+        .admin-nav a.active {
+            color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .admin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .admin-section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-description {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .section-content {
+            padding: 1.5rem;
+        }
+
+        .action-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .action-item {
+            margin-bottom: 1rem;
+        }
+
+        .action-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #374151;
+            transition: all 0.3s ease;
+        }
+
+        .action-link:hover {
+            background: #f0f4ff;
+            border-color: #667eea;
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .action-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #667eea;
+            color: white;
+            font-size: 1.125rem;
+        }
+
+        .action-text {
+            flex: 1;
+        }
+
+        .action-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .action-desc {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .quick-stat {
+            text-align: center;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .quick-stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.25rem;
+        }
+
+        .quick-stat-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .data-table {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+
+        .table-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .table-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1a202c;
+        }
+
+        .table-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .table-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            background: white;
+            color: #374151;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .table-btn:hover {
+            background: #f8fafc;
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .table-btn.primary {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .table-btn.primary:hover {
+            background: #5a67d8;
+            border-color: #5a67d8;
+        }
+
+        .recent-employees,
+        .pending-tasks {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            margin-bottom: 2rem;
+        }
+
+        .employee-item,
+        .task-item {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #f1f5f9;
+            display: flex;
+            justify-content: between;
+            align-items: center;
+        }
+
+        .employee-item:last-child,
+        .task-item:last-child {
+            border-bottom: none;
+        }
+
+        .employee-info,
+        .task-info {
+            flex: 1;
+        }
+
+        .employee-name,
+        .task-title {
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 0.25rem;
+        }
+
+        .employee-position,
+        .task-desc {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .employee-status,
+        .task-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-active {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-urgent {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        @media (max-width: 768px) {
+            .admin-nav ul {
+                gap: 1rem;
+            }
+
+            .admin-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .table-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+
+            .table-actions {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="home.html" class="logo">💼 SalaryManager</a>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="admin-dashboard.html">Admin</a></li>
+                <li><a href="employee-dashboard.html">Employee</a></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Admin Header -->
+    <section class="admin-header">
+        <div class="container">
+            <h1 class="admin-title">Admin Dashboard</h1>
+            <p class="admin-subtitle">Manage employees, salaries, and system operations</p>
+        </div>
+    </section>
+
+    <!-- Admin Navigation -->
+    <nav class="admin-nav">
+        <div class="container">
+            <ul>
+                <li><a href="admin-dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="admin-employees.html">Employees</a></li>
+                <li><a href="admin-departments.html">Departments</a></li>
+                <li><a href="admin-payroll.html">Payroll</a></li>
+                <li><a href="admin-attendance.html">Attendance</a></li>
+                <li><a href="admin-reports.html">Reports</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Quick Stats -->
+        <section class="quick-stats">
+            <div class="quick-stat">
+                <div class="quick-stat-number">1,247</div>
+                <div class="quick-stat-label">Total Employees</div>
+            </div>
+            <div class="quick-stat">
+                <div class="quick-stat-number">24</div>
+                <div class="quick-stat-label">Departments</div>
+            </div>
+            <div class="quick-stat">
+                <div class="quick-stat-number">15</div>
+                <div class="quick-stat-label">Pending Reviews</div>
+            </div>
+            <div class="quick-stat">
+                <div class="quick-stat-number">$2.4M</div>
+                <div class="quick-stat-label">Monthly Payroll</div>
+            </div>
+        </section>
+
+        <!-- Admin Sections -->
+        <div class="admin-grid">
+            <!-- Employee Management -->
+            <div class="admin-section">
+                <div class="section-header">
+                    <h3 class="section-title">Employee Management</h3>
+                    <p class="section-description">Manage employee records and information</p>
+                </div>
+                <div class="section-content">
+                    <ul class="action-list">
+                        <li class="action-item">
+                            <a href="admin-employee-add.html" class="action-link">
+                                <div class="action-icon">➕</div>
+                                <div class="action-text">
+                                    <div class="action-title">Add New Employee</div>
+                                    <div class="action-desc">Register a new employee in the system</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="action-item">
+                            <a href="admin-employees.html" class="action-link">
+                                <div class="action-icon">👥</div>
+                                <div class="action-text">
+                                    <div class="action-title">View All Employees</div>
+                                    <div class="action-desc">Browse and manage employee records</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="action-item">
+                            <a href="admin-employee-search.html" class="action-link">
+                                <div class="action-icon">🔍</div>
+                                <div class="action-text">
+                                    <div class="action-title">Search Employees</div>
+                                    <div class="action-desc">Find specific employee records</div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Salary & Payroll -->
+            <div class="admin-section">
+                <div class="section-header">
+                    <h3 class="section-title">Salary & Payroll</h3>
+                    <p class="section-description">Manage salary calculations and payroll processing</p>
+                </div>
+                <div class="section-content">
+                    <ul class="action-list">
+                        <li class="action-item">
+                            <a href="admin-salary-calculate.html" class="action-link">
+                                <div class="action-icon">💰</div>
+                                <div class="action-text">
+                                    <div class="action-title">Calculate Salaries</div>
+                                    <div class="action-desc">Process monthly salary calculations</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="action-item">
+                            <a href="admin-payroll.html" class="action-link">
+                                <div class="action-icon">📋</div>
+                                <div class="action-text">
+                                    <div class="action-title">Payroll Management</div>
+                                    <div class="action-desc">View and manage payroll records</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="action-item">
+                            <a href="admin-deductions.html" class="action-link">
+                                <div class="action-icon">📉</div>
+                                <div class="action-text">
+                                    <div class="action-title">Manage Deductions</div>
+                                    <div class="action-desc">Set up salary deductions and benefits</div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Attendance & Time -->
+            <div class="admin-section">
+                <div class="section-header">
+                    <h3 class="section-title">Attendance & Time</h3>
+                    <p class="section-description">Track and manage employee attendance</p>
+                </div>
+                <div class="section-content">
+                    <ul class="action-list">
+                        <li class="action-item">
+                            <a href="admin-attendance.html" class="action-link">
+                                <div class="action-icon">📊</div>
+                                <div class="action-text">
+                                    <div class="action-title">Attendance Records</div>
+                                    <div class="action-desc">View employee attendance data</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="action-item">
+                            <a href="admin-attendance-add.html" class="action-link">
+                                <div class="action-icon">📝</div>
+                                <div class="action-text">
+                                    <div class="action-title">Record Attendance</div>
+                                    <div class="action-desc">Manually add attendance records</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="action-item">
+                            <a href="admin-attendance-report.html" class="action-link">
+                                <div class="action-icon">📈</div>
+                                <div class="action-text">
+                                    <div class="action-title">Attendance Reports</div>
+                                    <div class="action-desc">Generate attendance reports</div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Reports & Analytics -->
+            <div class="admin-section">
+                <div class="section-header">
+                    <h3 class="section-title">Reports & Analytics</h3>
+                    <p class="section-description">Generate reports and analyze data</p>
+                </div>
+                <div class="section-content">
+                    <ul class="action-list">
+                        <li class="action-item">
+                            <a href="admin-reports.html" class="action-link">
+                                <div class="action-icon">📊</div>
+                                <div class="action-text">
+                                    <div class="action-title">All Reports</div>
+                                    <div class="action-desc">Access all system reports</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="action-item">
+                            <a href="admin-salary-report.html" class="action-link">
+                                <div class="action-icon">💵</div>
+                                <div class="action-text">
+                                    <div class="action-title">Salary Reports</div>
+                                    <div class="action-desc">Generate salary and payroll reports</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="action-item">
+                            <a href="admin-analytics.html" class="action-link">
+                                <div class="action-icon">📈</div>
+                                <div class="action-text">
+                                    <div class="action-title">Analytics Dashboard</div>
+                                    <div class="action-desc">View system analytics and insights</div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Employees -->
+        <div class="recent-employees">
+            <div class="table-header">
+                <h3 class="table-title">Recently Added Employees</h3>
+                <div class="table-actions">
+                    <a href="admin-employees.html" class="table-btn">View All</a>
+                    <a href="admin-employee-add.html" class="table-btn primary">Add New</a>
+                </div>
+            </div>
+            <div class="employee-item">
+                <div class="employee-info">
+                    <div class="employee-name">John Smith</div>
+                    <div class="employee-position">Software Developer - IT Department</div>
+                </div>
+                <div class="employee-status status-active">Active</div>
+            </div>
+            <div class="employee-item">
+                <div class="employee-info">
+                    <div class="employee-name">Sarah Johnson</div>
+                    <div class="employee-position">HR Manager - Human Resources</div>
+                </div>
+                <div class="employee-status status-pending">Pending</div>
+            </div>
+            <div class="employee-item">
+                <div class="employee-info">
+                    <div class="employee-name">Michael Brown</div>
+                    <div class="employee-position">Marketing Specialist - Marketing</div>
+                </div>
+                <div class="employee-status status-active">Active</div>
+            </div>
+        </div>
+
+        <!-- Pending Tasks -->
+        <div class="pending-tasks">
+            <div class="table-header">
+                <h3 class="table-title">Pending Administrative Tasks</h3>
+                <div class="table-actions">
+                    <a href="#" class="table-btn">Mark All Complete</a>
+                </div>
+            </div>
+            <div class="task-item">
+                <div class="task-info">
+                    <div class="task-title">Process March Payroll</div>
+                    <div class="task-desc">Calculate and process salaries for March 2025</div>
+                </div>
+                <div class="task-status status-urgent">Urgent</div>
+            </div>
+            <div class="task-item">
+                <div class="task-info">
+                    <div class="task-title">Review Attendance Records</div>
+                    <div class="task-desc">Verify attendance data for Q1 2025</div>
+                </div>
+                <div class="task-status status-pending">Pending</div>
+            </div>
+            <div class="task-item">
+                <div class="task-info">
+                    <div class="task-title">Update Employee Benefits</div>
+                    <div class="task-desc">Review and update employee benefit packages</div>
+                </div>
+                <div class="task-status status-pending">Pending</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Employee Salary Management System. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

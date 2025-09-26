@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Employee Salary Management System</title>
+    <link rel="stylesheet" href="styles/base.css">
+    <style>
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+        }
+
+        .login-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 450px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .login-logo {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .login-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 0.5rem;
+        }
+
+        .login-subtitle {
+            color: #4a5568;
+            font-size: 1rem;
+        }
+
+        .login-form {
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #fafafa;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-checkbox {
+            width: auto;
+        }
+
+        .checkbox-label {
+            font-weight: normal;
+            color: #4a5568;
+            cursor: pointer;
+        }
+
+        .login-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .login-divider {
+            text-align: center;
+            margin: 2rem 0;
+            position: relative;
+            color: #6b7280;
+        }
+
+        .login-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e5e7eb;
+        }
+
+        .login-divider span {
+            background: white;
+            padding: 0 1rem;
+        }
+
+        .user-type-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .user-type-card {
+            padding: 1.5rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #fafafa;
+        }
+
+        .user-type-card:hover {
+            border-color: #667eea;
+            background: white;
+        }
+
+        .user-type-card.active {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .user-type-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .user-type-title {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.25rem;
+        }
+
+        .user-type-desc {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .login-footer {
+            text-align: center;
+            color: #6b7280;
+        }
+
+        .login-footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .back-to-home {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .back-to-home:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                padding: 1rem;
+            }
+
+            .login-card {
+                padding: 2rem;
+            }
+
+            .user-type-selector {
+                grid-template-columns: 1fr;
+            }
+
+            .back-to-home {
+                position: static;
+                display: inline-block;
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <a href="home.html" class="back-to-home">← Back to Home</a>
+
+        <div class="login-card">
+            <div class="login-header">
+                <div class="login-logo">🔐</div>
+                <h1 class="login-title">Welcome Back</h1>
+                <p class="login-subtitle">Sign in to your account to continue</p>
+            </div>
+
+            <div class="user-type-selector">
+                <div class="user-type-card active" onclick="selectUserType('admin')">
+                    <div class="user-type-icon">👨‍💼</div>
+                    <div class="user-type-title">Administrator</div>
+                    <div class="user-type-desc">Full system access</div>
+                </div>
+                <div class="user-type-card" onclick="selectUserType('employee')">
+                    <div class="user-type-icon">👨‍💻</div>
+                    <div class="user-type-title">Employee</div>
+                    <div class="user-type-desc">View salary & profile</div>
+                </div>
+            </div>
+
+            <form class="login-form">
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" id="email" class="form-input" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" class="form-input" placeholder="Enter your password" required>
+                </div>
+
+                <div class="form-checkbox-group">
+                    <input type="checkbox" id="remember" class="form-checkbox">
+                    <label for="remember" class="checkbox-label">Remember me</label>
+                </div>
+
+                <button type="submit" class="login-btn" onclick="handleLogin()">Sign In</button>
+            </form>
+
+            <div class="login-divider">
+                <span>or</span>
+            </div>
+
+            <div class="login-footer">
+                <p>Don't have an account? <a href="#" onclick="alert('Registration feature coming soon!')">Contact
+                        Administrator</a></p>
+                <p><a href="#" onclick="alert('Password reset feature coming soon!')">Forgot your password?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function selectUserType(type) {
+            // Remove active class from all cards
+            document.querySelectorAll('.user-type-card').forEach(card => {
+                card.classList.remove('active');
+            });
+
+            // Add active class to selected card
+            event.target.closest('.user-type-card').classList.add('active');
+        }
+
+        function handleLogin() {
+            event.preventDefault();
+            const userType = document.querySelector('.user-type-card.active .user-type-title').textContent;
+
+            if (userType === 'Administrator') {
+                window.location.href = 'admin-dashboard.html';
+            } else {
+                window.location.href = 'employee-dashboard.html';
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management - Admin Panel</title>
+    <link rel="stylesheet" href="styles/base.css">
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .breadcrumbs {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        .breadcrumbs a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .controls-bar {
+            background: white;
+            padding: 1.5rem 0;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .controls-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .search-filter {
+            display: flex;
+            gap: 1rem;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .filter-select {
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            background: white;
+            min-width: 150px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .employees-table {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+
+        .table-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .table-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1a202c;
+        }
+
+        .employee-count {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        .employees-data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .employees-data-table th,
+        .employees-data-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .employees-data-table th {
+            background: #f8fafc;
+            font-weight: 600;
+            color: #374151;
+            position: sticky;
+            top: 0;
+        }
+
+        .employees-data-table tr:hover {
+            background: #f8fafc;
+        }
+
+        .employee-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            margin-right: 1rem;
+        }
+
+        .employee-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .employee-details {
+            flex: 1;
+        }
+
+        .employee-name {
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 0.25rem;
+        }
+
+        .employee-id {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-active {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .status-inactive {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .salary-amount {
+            font-weight: 600;
+            color: #059669;
+        }
+
+        .action-buttons-cell {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-btn-small {
+            padding: 0.375rem 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            background: white;
+            color: #374151;
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .action-btn-small:hover {
+            background: #f8fafc;
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .action-btn-small.edit {
+            color: #059669;
+            border-color: #a7f3d0;
+        }
+
+        .action-btn-small.edit:hover {
+            background: #ecfdf5;
+            border-color: #059669;
+        }
+
+        .action-btn-small.delete {
+            color: #dc2626;
+            border-color: #fecaca;
+        }
+
+        .action-btn-small.delete:hover {
+            background: #fef2f2;
+            border-color: #dc2626;
+        }
+
+        .pagination {
+            padding: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: between;
+            align-items: center;
+        }
+
+        .pagination-info {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .pagination-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .pagination-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            background: white;
+            color: #374151;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+
+        .pagination-btn:hover {
+            background: #f8fafc;
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .pagination-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .pagination-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 768px) {
+            .controls-content {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-filter {
+                min-width: auto;
+            }
+
+            .table-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+
+            .action-buttons-cell {
+                flex-direction: column;
+            }
+
+            .pagination {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="home.html" class="logo">💼 SalaryManager</a>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="admin-dashboard.html">Admin</a></li>
+                <li><a href="employee-dashboard.html">Employee</a></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="admin-dashboard.html">Admin Dashboard</a> / Employee Management
+            </div>
+            <h1 class="page-title">Employee Management</h1>
+        </div>
+    </section>
+
+    <!-- Controls Bar -->
+    <section class="controls-bar">
+        <div class="container">
+            <div class="controls-content">
+                <div class="search-filter">
+                    <input type="text" class="search-input"
+                        placeholder="Search employees by name, ID, or department...">
+                    <select class="filter-select">
+                        <option value="">All Departments</option>
+                        <option value="it">IT Department</option>
+                        <option value="hr">Human Resources</option>
+                        <option value="finance">Finance</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="operations">Operations</option>
+                    </select>
+                    <select class="filter-select">
+                        <option value="">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                        <option value="pending">Pending</option>
+                    </select>
+                </div>
+                <div class="action-buttons">
+                    <a href="admin-employee-add.html" class="btn btn-primary">Add New Employee</a>
+                    <a href="#" class="btn btn-secondary">Export Data</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Employees Table -->
+        <div class="employees-table">
+            <div class="table-header">
+                <div>
+                    <h3 class="table-title">All Employees</h3>
+                    <p class="employee-count">1,247 employees found</p>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table class="employees-data-table">
+                    <thead>
+                        <tr>
+                            <th>Employee</th>
+                            <th>Department</th>
+                            <th>Position</th>
+                            <th>Salary</th>
+                            <th>Hire Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="employee-info">
+                                    <div class="employee-avatar">JS</div>
+                                    <div class="employee-details">
+                                        <div class="employee-name">John Smith</div>
+                                        <div class="employee-id">EMP-001</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>IT Department</td>
+                            <td>Senior Software Developer</td>
+                            <td><span class="salary-amount">$85,000</span></td>
+                            <td>Jan 15, 2023</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td>
+                                <div class="action-buttons-cell">
+                                    <a href="admin-employee-view.html" class="action-btn-small">View</a>
+                                    <a href="admin-employee-edit.html" class="action-btn-small edit">Edit</a>
+                                    <a href="#" class="action-btn-small delete">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="employee-info">
+                                    <div class="employee-avatar">SJ</div>
+                                    <div class="employee-details">
+                                        <div class="employee-name">Sarah Johnson</div>
+                                        <div class="employee-id">EMP-002</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Human Resources</td>
+                            <td>HR Manager</td>
+                            <td><span class="salary-amount">$75,000</span></td>
+                            <td>Mar 08, 2023</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td>
+                                <div class="action-buttons-cell">
+                                    <a href="admin-employee-view.html" class="action-btn-small">View</a>
+                                    <a href="admin-employee-edit.html" class="action-btn-small edit">Edit</a>
+                                    <a href="#" class="action-btn-small delete">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="employee-info">
+                                    <div class="employee-avatar">MB</div>
+                                    <div class="employee-details">
+                                        <div class="employee-name">Michael Brown</div>
+                                        <div class="employee-id">EMP-003</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Marketing</td>
+                            <td>Marketing Specialist</td>
+                            <td><span class="salary-amount">$55,000</span></td>
+                            <td>Feb 20, 2023</td>
+                            <td><span class="status-badge status-pending">Pending</span></td>
+                            <td>
+                                <div class="action-buttons-cell">
+                                    <a href="admin-employee-view.html" class="action-btn-small">View</a>
+                                    <a href="admin-employee-edit.html" class="action-btn-small edit">Edit</a>
+                                    <a href="#" class="action-btn-small delete">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="employee-info">
+                                    <div class="employee-avatar">ED</div>
+                                    <div class="employee-details">
+                                        <div class="employee-name">Emily Davis</div>
+                                        <div class="employee-id">EMP-004</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Finance</td>
+                            <td>Financial Analyst</td>
+                            <td><span class="salary-amount">$68,000</span></td>
+                            <td>Dec 10, 2022</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td>
+                                <div class="action-buttons-cell">
+                                    <a href="admin-employee-view.html" class="action-btn-small">View</a>
+                                    <a href="admin-employee-edit.html" class="action-btn-small edit">Edit</a>
+                                    <a href="#" class="action-btn-small delete">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="employee-info">
+                                    <div class="employee-avatar">DW</div>
+                                    <div class="employee-details">
+                                        <div class="employee-name">David Wilson</div>
+                                        <div class="employee-id">EMP-005</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Operations</td>
+                            <td>Operations Manager</td>
+                            <td><span class="salary-amount">$92,000</span></td>
+                            <td>Nov 05, 2022</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td>
+                                <div class="action-buttons-cell">
+                                    <a href="admin-employee-view.html" class="action-btn-small">View</a>
+                                    <a href="admin-employee-edit.html" class="action-btn-small edit">Edit</a>
+                                    <a href="#" class="action-btn-small delete">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="employee-info">
+                                    <div class="employee-avatar">LT</div>
+                                    <div class="employee-details">
+                                        <div class="employee-name">Lisa Thompson</div>
+                                        <div class="employee-id">EMP-006</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>IT Department</td>
+                            <td>UX Designer</td>
+                            <td><span class="salary-amount">$72,000</span></td>
+                            <td>Apr 12, 2023</td>
+                            <td><span class="status-badge status-inactive">Inactive</span></td>
+                            <td>
+                                <div class="action-buttons-cell">
+                                    <a href="admin-employee-view.html" class="action-btn-small">View</a>
+                                    <a href="admin-employee-edit.html" class="action-btn-small edit">Edit</a>
+                                    <a href="#" class="action-btn-small delete">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pagination">
+                <div class="pagination-info">
+                    Showing 1-6 of 1,247 employees
+                </div>
+                <div class="pagination-controls">
+                    <a href="#" class="pagination-btn" disabled>Previous</a>
+                    <a href="#" class="pagination-btn active">1</a>
+                    <a href="#" class="pagination-btn">2</a>
+                    <a href="#" class="pagination-btn">3</a>
+                    <a href="#" class="pagination-btn">...</a>
+                    <a href="#" class="pagination-btn">208</a>
+                    <a href="#" class="pagination-btn">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Employee Salary Management System. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
