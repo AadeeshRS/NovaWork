@@ -7,6 +7,16 @@
     <title>Admin Dashboard - Employee Salary Management System</title>
     <link rel="stylesheet" href="styles/base.css">
     <style>
+        body {
+            background: #f7fafc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
         .admin-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -192,7 +202,7 @@
         }
 
         .table-title {
-            font-size: 1.125rem;
+            font-size: 1.25rem;
             font-weight: 600;
             color: #1a202c;
         }
@@ -242,7 +252,7 @@
 
         .employee-item,
         .task-item {
-            padding: 1rem 1.5rem;
+            padding: 1.5rem;
             border-bottom: 1px solid #f1f5f9;
             display: flex;
             justify-content: between;
@@ -264,11 +274,12 @@
             font-weight: 600;
             color: #1a202c;
             margin-bottom: 0.25rem;
+            font-size: 1rem;
         }
 
         .employee-position,
         .task-desc {
-            font-size: 0.875rem;
+            font-size: 1rem;
             color: #6b7280;
         }
 
@@ -322,7 +333,7 @@
 </head>
 
 <body>
-    <!-- Navigation -->
+
     <nav class="navbar">
         <div class="container">
             <a href="home.html" class="logo">💼 NovaWork</a>
@@ -336,19 +347,19 @@
         </div>
     </nav>
 
-    <!-- Admin Header -->
+
     <section class="admin-header">
         <div class="container">
             <h1 class="admin-title">Admin Dashboard</h1>
-            <p class="admin-subtitle">Manage employees, salaries, and system operations</p>
+            <p>Manage employees, salaries, and system operations</p>
         </div>
     </section>
 
-    <!-- Admin Navigation -->
+
     <nav class="admin-nav">
         <div class="container">
             <ul>
-                <li><a href="admin-dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="admin-dashboard.html" class="active">Overview</a></li>
                 <li><a href="admin-employees.html">Employees</a></li>
                 <li><a href="admin-departments.html">Departments</a></li>
                 <li><a href="admin-payroll.html">Payroll</a></li>
@@ -359,7 +370,7 @@
     </nav>
 
     <div class="container">
-        <!-- Quick Stats -->
+
         <section class="quick-stats">
             <div class="quick-stat">
                 <div class="quick-stat-number">1,247</div>
@@ -374,14 +385,14 @@
                 <div class="quick-stat-label">Pending Reviews</div>
             </div>
             <div class="quick-stat">
-                <div class="quick-stat-number">$2.4M</div>
+                <div class="quick-stat-number">₹20L</div>
                 <div class="quick-stat-label">Monthly Payroll</div>
             </div>
         </section>
 
-        <!-- Admin Sections -->
+
         <div class="admin-grid">
-            <!-- Employee Management -->
+
             <div class="admin-section">
                 <div class="section-header">
                     <h3 class="section-title">Employee Management</h3>
@@ -420,7 +431,7 @@
                 </div>
             </div>
 
-            <!-- Salary & Payroll -->
+
             <div class="admin-section">
                 <div class="section-header">
                     <h3 class="section-title">Salary & Payroll</h3>
@@ -459,7 +470,7 @@
                 </div>
             </div>
 
-            <!-- Attendance & Time -->
+
             <div class="admin-section">
                 <div class="section-header">
                     <h3 class="section-title">Attendance & Time</h3>
@@ -498,7 +509,7 @@
                 </div>
             </div>
 
-            <!-- Reports & Analytics -->
+
             <div class="admin-section">
                 <div class="section-header">
                     <h3 class="section-title">Reports & Analytics</h3>
@@ -538,7 +549,7 @@
             </div>
         </div>
 
-        <!-- Recent Employees -->
+
         <div class="recent-employees">
             <div class="table-header">
                 <h3 class="table-title">Recently Added Employees</h3>
@@ -549,28 +560,28 @@
             </div>
             <div class="employee-item">
                 <div class="employee-info">
-                    <div class="employee-name">John Smith</div>
+                    <div class="employee-name">Rohit Sharma</div>
                     <div class="employee-position">Software Developer - IT Department</div>
                 </div>
                 <div class="employee-status status-active">Active</div>
             </div>
             <div class="employee-item">
                 <div class="employee-info">
-                    <div class="employee-name">Sarah Johnson</div>
+                    <div class="employee-name">Priya Singh</div>
                     <div class="employee-position">HR Manager - Human Resources</div>
                 </div>
                 <div class="employee-status status-pending">Pending</div>
             </div>
             <div class="employee-item">
                 <div class="employee-info">
-                    <div class="employee-name">Michael Brown</div>
+                    <div class="employee-name">Amit Verma</div>
                     <div class="employee-position">Marketing Specialist - Marketing</div>
                 </div>
                 <div class="employee-status status-active">Active</div>
             </div>
         </div>
 
-        <!-- Pending Tasks -->
+
         <div class="pending-tasks">
             <div class="table-header">
                 <h3 class="table-title">Pending Administrative Tasks</h3>
@@ -602,7 +613,7 @@
         </div>
     </div>
 
-    <!-- Footer -->
+
     <footer class="footer">
         <div class="container">
             <p>&copy; 2025 Employee Salary Management System. All rights reserved.</p>

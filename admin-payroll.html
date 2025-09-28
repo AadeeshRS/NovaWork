@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payroll - Admin Dashboard | NovaWork</title>
+    <link rel="stylesheet" href="styles/base.css">
+    <style>
+        body {
+            background: #f7fafc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        .admin-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+        }
+
+        .admin-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .admin-nav {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .admin-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .admin-nav a {
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .admin-nav a:hover,
+        .admin-nav a.active {
+            color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            margin-bottom: 2rem;
+        }
+
+        .card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1a202c;
+        }
+
+        .payroll-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .payroll-table th,
+        .payroll-table td {
+            padding: 1rem;
+            font-size: 1rem;
+            border-bottom: 1px solid #f1f5f9;
+            text-align: left;
+        }
+
+        .payroll-table th {
+            background: #f0f4ff;
+            color: #667eea;
+        }
+
+        .payroll-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .add-btn {
+            background: #667eea;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .add-btn:hover {
+            background: #764ba2;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="home.html" class="logo">💼 NovaWork</a>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="admin-dashboard.html" class="active">Admin</a></li>
+                <li><a href="employee-dashboard.html">Employee</a></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="admin-header">
+        <div class="container">
+            <h1 class="admin-title">Payroll Management</h1>
+            <p>Manage payroll and salary details for all employees.</p>
+        </div>
+    </section>
+    <nav class="admin-nav">
+        <div class="container">
+            <ul>
+                <li><a href="admin-dashboard.html">Overview</a></li>
+                <li><a href="admin-employees.html">Employees</a></li>
+                <li><a href="admin-departments.html">Departments</a></li>
+                <li><a href="admin-payroll.html" class="active">Payroll</a></li>
+                <li><a href="admin-attendance.html">Attendance</a></li>
+                <li><a href="admin-reports.html">Reports</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Payroll List</h3>
+                <button class="add-btn">+ Add Payroll</button>
+            </div>
+            <table class="payroll-table">
+                <thead>
+                    <tr>
+                        <th>Employee Name</th>
+                        <th>Department</th>
+                        <th>Month</th>
+                        <th>Salary (₹)</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Priya Sharma</td>
+                        <td>HR</td>
+                        <td>September</td>
+                        <td>₹60,000</td>
+                        <td>Paid</td>
+                        <td><button class="add-btn">Edit</button></td>
+                    </tr>
+                    <tr>
+                        <td>Ravi Kumar</td>
+                        <td>Finance</td>
+                        <td>September</td>
+                        <td>₹55,000</td>
+                        <td>Pending</td>
+                        <td><button class="add-btn">Edit</button></td>
+                    </tr>
+                    <tr>
+                        <td>Neha Singh</td>
+                        <td>IT</td>
+                        <td>September</td>
+                        <td>₹70,000</td>
+                        <td>Paid</td>
+                        <td><button class="add-btn">Edit</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 NovaWork. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

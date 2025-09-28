@@ -4,33 +4,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Management - Admin Panel</title>
+    <title>Employees - Admin Dashboard | NovaWork</title>
     <link rel="stylesheet" href="styles/base.css">
     <style>
-        .page-header {
+        body {
+            background: #f7fafc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        .admin-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 2rem 0;
         }
 
-        .page-title {
+        .admin-title {
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
         }
 
-        .breadcrumbs {
-            opacity: 0.9;
-            font-size: 1rem;
+        .admin-nav {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            margin-bottom: 2rem;
         }
 
-        .breadcrumbs a {
-            color: white;
+        .admin-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .admin-nav a {
+            color: #4a5568;
             text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
         }
 
-        .breadcrumbs a:hover {
-            text-decoration: underline;
+        .admin-nav a:hover,
+        .admin-nav a.active {
+            color: #667eea;
+            background: #f0f4ff;
         }
 
         .controls-bar {
@@ -115,6 +141,7 @@
         .employees-data-table th,
         .employees-data-table td {
             padding: 1rem;
+            font-size: 1rem;
             text-align: left;
             border-bottom: 1px solid #f1f5f9;
         }
@@ -309,62 +336,45 @@
 </head>
 
 <body>
-    <!-- Navigation -->
+
     <nav class="navbar">
         <div class="container">
             <a href="home.html" class="logo">💼 NovaWork</a>
             <ul class="nav-links">
                 <li><a href="home.html">Home</a></li>
                 <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="admin-dashboard.html">Admin</a></li>
+                <li><a href="admin-dashboard.html" class="active">Admin</a></li>
                 <li><a href="employee-dashboard.html">Employee</a></li>
                 <li><a href="login.html">Logout</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <div class="breadcrumbs">
-                <a href="admin-dashboard.html">Admin Dashboard</a> / Employee Management
-            </div>
-            <h1 class="page-title">Employee Management</h1>
-        </div>
-    </section>
 
-    <!-- Controls Bar -->
-    <section class="controls-bar">
+    <section class="admin-header">
         <div class="container">
-            <div class="controls-content">
-                <div class="search-filter">
-                    <input type="text" class="search-input"
-                        placeholder="Search employees by name, ID, or department...">
-                    <select class="filter-select">
-                        <option value="">All Departments</option>
-                        <option value="it">IT Department</option>
-                        <option value="hr">Human Resources</option>
-                        <option value="finance">Finance</option>
-                        <option value="marketing">Marketing</option>
-                        <option value="operations">Operations</option>
-                    </select>
-                    <select class="filter-select">
-                        <option value="">All Status</option>
-                        <option value="active">Active</option>
-                        <option value="inactive">Inactive</option>
-                        <option value="pending">Pending</option>
-                    </select>
-                </div>
-                <div class="action-buttons">
-                    <a href="admin-employee-add.html" class="btn btn-primary">Add New Employee</a>
-                    <a href="#" class="btn btn-secondary">Export Data</a>
-                </div>
-            </div>
+            <h1 class="admin-title">Employees Management</h1>
+            <p>Manage all employees in NovaWork.</p>
         </div>
     </section>
+    <nav class="admin-nav">
+        <div class="container">
+            <ul>
+                <li><a href="admin-dashboard.html">Overview</a></li>
+                <li><a href="admin-employees.html" class="active">Employees</a></li>
+                <li><a href="admin-departments.html">Departments</a></li>
+                <li><a href="admin-payroll.html">Payroll</a></li>
+                <li><a href="admin-attendance.html">Attendance</a></li>
+                <li><a href="admin-reports.html">Reports</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
 
     <div class="container">
-        <!-- Employees Table -->
+
         <div class="employees-table">
             <div class="table-header">
                 <div>
@@ -392,14 +402,14 @@
                                 <div class="employee-info">
                                     <div class="employee-avatar">JS</div>
                                     <div class="employee-details">
-                                        <div class="employee-name">John Smith</div>
+                                        <div class="employee-name">Rohit Sharma</div>
                                         <div class="employee-id">EMP-001</div>
                                     </div>
                                 </div>
                             </td>
                             <td>IT Department</td>
                             <td>Senior Software Developer</td>
-                            <td><span class="salary-amount">$85,000</span></td>
+                            <td><span class="salary-amount">₹7,00,000</span></td>
                             <td>Jan 15, 2023</td>
                             <td><span class="status-badge status-active">Active</span></td>
                             <td>
@@ -415,14 +425,14 @@
                                 <div class="employee-info">
                                     <div class="employee-avatar">SJ</div>
                                     <div class="employee-details">
-                                        <div class="employee-name">Sarah Johnson</div>
+                                        <div class="employee-name">Priya Singh</div>
                                         <div class="employee-id">EMP-002</div>
                                     </div>
                                 </div>
                             </td>
                             <td>Human Resources</td>
                             <td>HR Manager</td>
-                            <td><span class="salary-amount">$75,000</span></td>
+                            <td><span class="salary-amount">₹6,00,000</span></td>
                             <td>Mar 08, 2023</td>
                             <td><span class="status-badge status-active">Active</span></td>
                             <td>
@@ -438,14 +448,14 @@
                                 <div class="employee-info">
                                     <div class="employee-avatar">MB</div>
                                     <div class="employee-details">
-                                        <div class="employee-name">Michael Brown</div>
+                                        <div class="employee-name">Amit Verma</div>
                                         <div class="employee-id">EMP-003</div>
                                     </div>
                                 </div>
                             </td>
                             <td>Marketing</td>
                             <td>Marketing Specialist</td>
-                            <td><span class="salary-amount">$55,000</span></td>
+                            <td><span class="salary-amount">₹4,00,000</span></td>
                             <td>Feb 20, 2023</td>
                             <td><span class="status-badge status-pending">Pending</span></td>
                             <td>
@@ -461,14 +471,14 @@
                                 <div class="employee-info">
                                     <div class="employee-avatar">ED</div>
                                     <div class="employee-details">
-                                        <div class="employee-name">Emily Davis</div>
+                                        <div class="employee-name">Neha Gupta</div>
                                         <div class="employee-id">EMP-004</div>
                                     </div>
                                 </div>
                             </td>
                             <td>Finance</td>
                             <td>Financial Analyst</td>
-                            <td><span class="salary-amount">$68,000</span></td>
+                            <td><span class="salary-amount">₹5,50,000</span></td>
                             <td>Dec 10, 2022</td>
                             <td><span class="status-badge status-active">Active</span></td>
                             <td>
@@ -484,14 +494,14 @@
                                 <div class="employee-info">
                                     <div class="employee-avatar">DW</div>
                                     <div class="employee-details">
-                                        <div class="employee-name">David Wilson</div>
+                                        <div class="employee-name">Suresh Kumar</div>
                                         <div class="employee-id">EMP-005</div>
                                     </div>
                                 </div>
                             </td>
                             <td>Operations</td>
                             <td>Operations Manager</td>
-                            <td><span class="salary-amount">$92,000</span></td>
+                            <td><span class="salary-amount">₹8,00,000</span></td>
                             <td>Nov 05, 2022</td>
                             <td><span class="status-badge status-active">Active</span></td>
                             <td>
@@ -507,14 +517,14 @@
                                 <div class="employee-info">
                                     <div class="employee-avatar">LT</div>
                                     <div class="employee-details">
-                                        <div class="employee-name">Lisa Thompson</div>
+                                        <div class="employee-name">Anjali Mehra</div>
                                         <div class="employee-id">EMP-006</div>
                                     </div>
                                 </div>
                             </td>
                             <td>IT Department</td>
                             <td>UX Designer</td>
-                            <td><span class="salary-amount">$72,000</span></td>
+                            <td><span class="salary-amount">₹6,50,000</span></td>
                             <td>Apr 12, 2023</td>
                             <td><span class="status-badge status-inactive">Inactive</span></td>
                             <td>
@@ -546,10 +556,10 @@
         </div>
     </div>
 
-    <!-- Footer -->
+
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Employee Salary Management System. All rights reserved.</p>
+            <p>&copy; 2025 NovaWork. All rights reserved.</p>
         </div>
     </footer>
 </body>

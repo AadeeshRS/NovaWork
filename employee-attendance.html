@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance - Employee Dashboard | NovaWork</title>
+    <link rel="stylesheet" href="styles/base.css">
+    <style>
+        body {
+            background: #f7fafc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        .employee-header {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+            padding: 3rem 0 2rem 0;
+        }
+
+        .employee-nav {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem 0 1.5rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .attendance-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .attendance-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .attendance-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1a202c;
+        }
+
+        .attendance-content {
+            padding: 1.5rem;
+        }
+
+        .attendance-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .attendance-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .attendance-label {
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        .attendance-value {
+            color: #1a202c;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .employee-nav ul {
+                gap: 1rem;
+            }
+
+            .attendance-card {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="employee-header">
+        <div class="container">
+            <div class="employee-welcome">
+                <div class="employee-avatar">JS</div>
+                <div class="employee-info">
+                    <h1>Attendance</h1>
+                    <p class="employee-details">Software Developer • IT Department • EMP-001</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <nav class="employee-nav">
+        <div class="container">
+            <ul>
+                <li><a href="employee-dashboard.html">Dashboard</a></li>
+                <li><a href="employee-profile.html">My Profile</a></li>
+                <li><a href="employee-payslips.html">Payslips</a></li>
+                <li><a href="employee-attendance.html" class="active">Attendance</a></li>
+                <li><a href="employee-leave.html">Leave Requests</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="attendance-card">
+            <div class="attendance-header">
+                <h3 class="attendance-title">Attendance Record</h3>
+            </div>
+            <div class="attendance-content">
+                <div class="attendance-item">
+                    <span class="attendance-label">Present Days</span>
+                    <span class="attendance-value">22</span>
+                </div>
+                <div class="attendance-item">
+                    <span class="attendance-label">Absent Days</span>
+                    <span class="attendance-value">2</span>
+                </div>
+                <div class="attendance-item">
+                    <span class="attendance-label">Leaves Taken</span>
+                    <span class="attendance-value">1</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Employee Salary Management System. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

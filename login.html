@@ -294,12 +294,10 @@
 
     <script>
         function selectUserType(type) {
-            // Remove active class from all cards
             document.querySelectorAll('.user-type-card').forEach(card => {
                 card.classList.remove('active');
             });
 
-            // Add active class to selected card
             event.target.closest('.user-type-card').classList.add('active');
         }
 

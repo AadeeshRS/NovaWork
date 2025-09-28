@@ -7,10 +7,27 @@
     <title>Employee Dashboard - Employee Salary Management System</title>
     <link rel="stylesheet" href="styles/base.css">
     <style>
+        body {
+            background: #f7fafc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
         .employee-header {
             background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
             color: white;
-            padding: 2rem 0;
+            padding: 3rem 0 2rem 0;
+        }
+
+        .employee-nav {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem 0 1.5rem 0;
+            margin-bottom: 2rem;
         }
 
         .employee-welcome {
@@ -46,7 +63,7 @@
         .employee-nav {
             background: white;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 1rem 0;
+            padding: 1.5rem 0 1.5rem 0;
             margin-bottom: 2rem;
         }
 
@@ -384,7 +401,7 @@
 </head>
 
 <body>
-    <!-- Navigation -->
+
     <nav class="navbar">
         <div class="container">
             <a href="home.html" class="logo">💼 NovaWork</a>
@@ -398,20 +415,20 @@
         </div>
     </nav>
 
-    <!-- Employee Header -->
+
     <section class="employee-header">
         <div class="container">
             <div class="employee-welcome">
                 <div class="employee-avatar">JS</div>
                 <div class="employee-info">
-                    <h1>Welcome, John Smith</h1>
+                    <h1>Welcome, Rohit Sharma</h1>
                     <p class="employee-details">Software Developer • IT Department • EMP-001</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Employee Navigation -->
+
     <nav class="employee-nav">
         <div class="container">
             <ul>
@@ -425,11 +442,11 @@
     </nav>
 
     <div class="container">
-        <!-- Salary and Attendance Overview -->
+
         <section class="employee-grid">
             <div class="salary-card">
                 <h3 class="salary-title">Current Monthly Salary</h3>
-                <div class="salary-amount">$7,083</div>
+                <div class="salary-amount">₹60,000</div>
                 <p class="salary-period">March 2025</p>
             </div>
 
@@ -452,7 +469,7 @@
             </div>
         </section>
 
-        <!-- Leave Balance -->
+
         <section class="leave-balance">
             <h3 class="leave-balance-title">Leave Balance for 2025</h3>
             <div class="leave-balance-content">
@@ -471,7 +488,7 @@
             </div>
         </section>
 
-        <!-- Employee Information -->
+
         <section class="info-sections">
             <div class="info-card">
                 <div class="info-header">
@@ -484,11 +501,11 @@
                     </div>
                     <div class="info-item">
                         <span class="info-label">Email</span>
-                        <span class="info-value">john.smith@company.com</span>
+                        <span class="info-value">rohit.sharma@novawork.in</span>
                     </div>
                     <div class="info-item">
                         <span class="info-label">Phone</span>
-                        <span class="info-value">+1 (555) 123-4567</span>
+                        <span class="info-value">+91 9876543210</span>
                     </div>
                     <div class="info-item">
                         <span class="info-label">Hire Date</span>
@@ -516,21 +533,21 @@
                     </div>
                     <div class="info-item">
                         <span class="info-label">Manager</span>
-                        <span class="info-value">Sarah Johnson</span>
+                        <span class="info-value">Priya Singh</span>
                     </div>
                     <div class="info-item">
                         <span class="info-label">Work Location</span>
-                        <span class="info-value">New York Office</span>
+                        <span class="info-value">Bengaluru Office</span>
                     </div>
                     <div class="info-item">
                         <span class="info-label">Base Salary</span>
-                        <span class="info-value">$85,000/year</span>
+                        <span class="info-value">₹7,00,000/year</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Recent Payslips -->
+
         <section class="recent-payslips">
             <div class="info-header">
                 <h3 class="info-title">Recent Payslips</h3>
@@ -548,7 +565,7 @@
                     <div class="payslip-month">February 2025</div>
                     <div class="payslip-date">Processed on February 28, 2025</div>
                 </div>
-                <div class="payslip-amount">$7,083.33</div>
+                <div class="payslip-amount">₹60,000.00</div>
                 <a href="#" class="payslip-download">Download PDF</a>
             </div>
             <div class="payslip-item">
@@ -556,12 +573,12 @@
                     <div class="payslip-month">January 2025</div>
                     <div class="payslip-date">Processed on January 31, 2025</div>
                 </div>
-                <div class="payslip-amount">$7,083.33</div>
+                <div class="payslip-amount">₹60,000.00</div>
                 <a href="#" class="payslip-download">Download PDF</a>
             </div>
         </section>
 
-        <!-- Quick Actions -->
+
         <section class="quick-actions">
             <div class="info-header">
                 <h3 class="info-title">Quick Actions</h3>
@@ -599,7 +616,7 @@
         </section>
     </div>
 
-    <!-- Footer -->
+
     <footer class="footer">
         <div class="container">
             <p>&copy; 2025 Employee Salary Management System. All rights reserved.</p>
