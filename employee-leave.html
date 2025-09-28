@@ -4,9 +4,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attendance - Employee Dashboard | NovaWork</title>
+    <title>Leave Requests - Employee Dashboard | NovaWork</title>
     <link rel="stylesheet" href="styles/base.css">
     <style>
+        .leave-actions {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            margin-bottom: 2.5rem;
+            gap: 2rem;
+        }
+
+        .leave-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            background: white;
+            color: #374151;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .leave-btn:hover {
+            background: #f0fff4;
+            border-color: #48bb78;
+            color: #48bb78;
+        }
+
+        .apply-leave-btn {
+            display: inline-block;
+            background: linear-gradient(90deg, #6b47dc 0%, #7c5dfa 100%);
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(72, 187, 120, 0.08);
+            cursor: pointer;
+            margin-bottom: 2rem;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .apply-leave-btn:hover {
+            background: linear-gradient(90deg, #7c5dfa 0%, #6b47dc 100%);
+            color: #f0fff4;
+        }
+
         body {
             background: #f7fafc;
         }
@@ -60,13 +107,6 @@
             font-size: 1.125rem;
         }
 
-        .employee-nav {
-            background: white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 1.5rem 0 1.5rem 0;
-            margin-bottom: 2rem;
-        }
-
         .employee-nav ul {
             display: flex;
             list-style: none;
@@ -91,15 +131,7 @@
             background: #f0fff4;
         }
 
-        .employee-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-
-        .attendance-card {
+        .leave-card {
             background: white;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
@@ -110,22 +142,22 @@
             margin-right: auto;
         }
 
-        .attendance-header {
+        .leave-header {
             padding: 1.5rem;
             border-bottom: 1px solid #e2e8f0;
         }
 
-        .attendance-title {
+        .leave-title {
             font-size: 1.25rem;
             font-weight: 600;
             color: #1a202c;
         }
 
-        .attendance-content {
+        .leave-content {
             padding: 1.5rem;
         }
 
-        .attendance-item {
+        .leave-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -134,18 +166,18 @@
             border-bottom: 1px solid #f1f5f9;
         }
 
-        .attendance-item:last-child {
+        .leave-item:last-child {
             border-bottom: none;
             margin-bottom: 0;
             padding-bottom: 0;
         }
 
-        .attendance-label {
+        .leave-label {
             color: #6b7280;
             font-weight: 500;
         }
 
-        .attendance-value {
+        .leave-value {
             color: #1a202c;
             font-weight: 600;
         }
@@ -155,7 +187,7 @@
                 gap: 1rem;
             }
 
-            .attendance-card {
+            .leave-card {
                 max-width: 100%;
             }
         }
@@ -182,7 +214,7 @@
             <div class="employee-welcome">
                 <div class="employee-avatar">JS</div>
                 <div class="employee-info">
-                    <h1>Attendance</h1>
+                    <h1>Leave Requests</h1>
                     <p class="employee-details">Software Developer • IT Department • EMP-001</p>
                 </div>
             </div>
@@ -196,29 +228,32 @@
                 <li><a href="employee-dashboard.html">Dashboard</a></li>
                 <li><a href="employee-profile.html">My Profile</a></li>
                 <li><a href="employee-payslips.html">Payslips</a></li>
-                <li><a href="employee-attendance.html" class="active">Attendance</a></li>
-                <li><a href="employee-leave.html">Leave Requests</a></li>
+                <li><a href="employee-attendance.html">Attendance</a></li>
+                <li><a href="employee-leave.html" class="active">Leave Requests</a></li>
             </ul>
         </div>
     </nav>
     <div class="container">
-        <div class="attendance-card">
-            <div class="attendance-header">
-                <h3 class="attendance-title">Attendance</h3>
+        <div class="leave-card">
+            <div class="leave-header">
+                <h3 class="leave-title">Leave Requests</h3>
             </div>
-            <div class="attendance-content">
-                <div class="attendance-item">
-                    <span class="attendance-label">Present Days</span>
-                    <span class="attendance-value">22</span>
+            <div class="leave-content">
+                <div class="leave-item">
+                    <span class="leave-label">2025-09-10</span>
+                    <span class="leave-value">Approved</span>
                 </div>
-                <div class="attendance-item">
-                    <span class="attendance-label">Absent Days</span>
-                    <span class="attendance-value">2</span>
+                <div class="leave-item">
+                    <span class="leave-label">2025-08-22</span>
+                    <span class="leave-value">Pending</span>
                 </div>
-                <div class="attendance-item">
-                    <span class="attendance-label">Leaves Taken</span>
-                    <span class="attendance-value">1</span>
+                <div class="leave-item">
+                    <span class="leave-label">2025-07-15</span>
+                    <span class="leave-value">Rejected</span>
                 </div>
+            </div>
+            <div class="leave-actions">
+                <button class="leave-btn">Apply Leave</button>
             </div>
         </div>
     </div>

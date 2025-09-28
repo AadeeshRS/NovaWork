@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attendance - Employee Dashboard | NovaWork</title>
+    <title>Payslips - Employee Dashboard | NovaWork</title>
     <link rel="stylesheet" href="styles/base.css">
     <style>
         body {
@@ -60,13 +60,6 @@
             font-size: 1.125rem;
         }
 
-        .employee-nav {
-            background: white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 1.5rem 0 1.5rem 0;
-            margin-bottom: 2rem;
-        }
-
         .employee-nav ul {
             display: flex;
             list-style: none;
@@ -91,15 +84,7 @@
             background: #f0fff4;
         }
 
-        .employee-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-
-        .attendance-card {
+        .payslip-card {
             background: white;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
@@ -110,22 +95,22 @@
             margin-right: auto;
         }
 
-        .attendance-header {
+        .payslip-header {
             padding: 1.5rem;
             border-bottom: 1px solid #e2e8f0;
         }
 
-        .attendance-title {
+        .payslip-title {
             font-size: 1.25rem;
             font-weight: 600;
             color: #1a202c;
         }
 
-        .attendance-content {
+        .payslip-content {
             padding: 1.5rem;
         }
 
-        .attendance-item {
+        .payslip-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -134,18 +119,18 @@
             border-bottom: 1px solid #f1f5f9;
         }
 
-        .attendance-item:last-child {
+        .payslip-item:last-child {
             border-bottom: none;
             margin-bottom: 0;
             padding-bottom: 0;
         }
 
-        .attendance-label {
+        .payslip-label {
             color: #6b7280;
             font-weight: 500;
         }
 
-        .attendance-value {
+        .payslip-value {
             color: #1a202c;
             font-weight: 600;
         }
@@ -155,7 +140,7 @@
                 gap: 1rem;
             }
 
-            .attendance-card {
+            .payslip-card {
                 max-width: 100%;
             }
         }
@@ -182,7 +167,7 @@
             <div class="employee-welcome">
                 <div class="employee-avatar">JS</div>
                 <div class="employee-info">
-                    <h1>Attendance</h1>
+                    <h1>Payslips</h1>
                     <p class="employee-details">Software Developer • IT Department • EMP-001</p>
                 </div>
             </div>
@@ -195,29 +180,29 @@
             <ul>
                 <li><a href="employee-dashboard.html">Dashboard</a></li>
                 <li><a href="employee-profile.html">My Profile</a></li>
-                <li><a href="employee-payslips.html">Payslips</a></li>
-                <li><a href="employee-attendance.html" class="active">Attendance</a></li>
+                <li><a href="employee-payslips.html" class="active">Payslips</a></li>
+                <li><a href="employee-attendance.html">Attendance</a></li>
                 <li><a href="employee-leave.html">Leave Requests</a></li>
             </ul>
         </div>
     </nav>
     <div class="container">
-        <div class="attendance-card">
-            <div class="attendance-header">
-                <h3 class="attendance-title">Attendance</h3>
+        <div class="payslip-card">
+            <div class="payslip-header">
+                <h3 class="payslip-title">Payslips</h3>
             </div>
-            <div class="attendance-content">
-                <div class="attendance-item">
-                    <span class="attendance-label">Present Days</span>
-                    <span class="attendance-value">22</span>
+            <div class="payslip-content">
+                <div class="payslip-item">
+                    <span class="payslip-label">August 2025</span>
+                    <span class="payslip-value">₹80,000</span>
                 </div>
-                <div class="attendance-item">
-                    <span class="attendance-label">Absent Days</span>
-                    <span class="attendance-value">2</span>
+                <div class="payslip-item">
+                    <span class="payslip-label">July 2025</span>
+                    <span class="payslip-value">₹80,000</span>
                 </div>
-                <div class="attendance-item">
-                    <span class="attendance-label">Leaves Taken</span>
-                    <span class="attendance-value">1</span>
+                <div class="payslip-item">
+                    <span class="payslip-label">June 2025</span>
+                    <span class="payslip-value">₹80,000</span>
                 </div>
             </div>
         </div>
