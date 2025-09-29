@@ -1,4 +1,4 @@
-/* Base styles for Employee Salary Management System */
+
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +12,7 @@ body {
     background-color: #f8fafc;
 }
 
-/* Navigation Styles */
+
 .navbar {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     padding: 1rem 0;
@@ -55,7 +55,6 @@ body {
     color: #e2e8f0;
 }
 
-/* Container and Layout */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -67,7 +66,6 @@ body {
     padding: 2rem 0;
 }
 
-/* Card Styles */
 .card {
     background: white;
     border-radius: 12px;
@@ -89,7 +87,6 @@ body {
     color: #1a202c;
 }
 
-/* Button Styles */
 .btn {
     display: inline-block;
     padding: 0.75rem 1.5rem;
@@ -139,7 +136,6 @@ body {
     background: #e53e3e;
 }
 
-/* Form Styles */
 .form-group {
     margin-bottom: 1.5rem;
 }
@@ -166,7 +162,6 @@ body {
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
-/* Table Styles */
 .table {
     width: 100%;
     border-collapse: collapse;
@@ -193,7 +188,7 @@ body {
     background: #f7fafc;
 }
 
-/* Grid Layout */
+
 .grid {
     display: grid;
     gap: 2rem;
@@ -211,7 +206,6 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
-/* Stat Cards */
 .stat-card {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -231,7 +225,7 @@ body {
     opacity: 0.9;
 }
 
-/* Footer */
+
 .footer {
     background: #2d3748;
     color: white;
@@ -240,7 +234,6 @@ body {
     margin-top: 4rem;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .navbar .container {
         flex-direction: column;
@@ -267,7 +260,7 @@ body {
     }
 }
 
-/* Utility Classes */
+
 .text-center {
     text-align: center;
 }
