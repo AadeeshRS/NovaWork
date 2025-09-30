@@ -249,7 +249,7 @@
             </div>
 
             <div class="user-type-selector">
-                <div class="user-type-card active" onclick="selectUserType('admin')">
+                <div class="user-type-card active">
                     <div class="user-type-icon">👨‍💼</div>
                     <div class="user-type-title">Administrator</div>
                     <div class="user-type-desc">Full system access</div>
@@ -277,7 +277,7 @@
                     <label for="remember" class="checkbox-label">Remember me</label>
                 </div>
 
-                <button type="submit" class="login-btn" onclick="handleLogin()">Sign In</button>
+                <button type="submit" class="login-btn">Sign In</button>
             </form>
 
             <div class="login-divider">
@@ -285,33 +285,13 @@
             </div>
 
             <div class="login-footer">
-                <p>Don't have an account? <a href="#" onclick="alert('Registration feature coming soon!')">Contact
+                <p>Don't have an account? <a href="#">Contact
                         Administrator</a></p>
-                <p><a href="#" onclick="alert('Password reset feature coming soon!')">Forgot your password?</a></p>
+                <p><a href="#">Forgot your password?</a></p>
             </div>
         </div>
     </div>
 
-    <script>
-        function selectUserType(type) {
-            document.querySelectorAll('.user-type-card').forEach(card => {
-                card.classList.remove('active');
-            });
-
-            event.target.closest('.user-type-card').classList.add('active');
-        }
-
-        function handleLogin() {
-            event.preventDefault();
-            const userType = document.querySelector('.user-type-card.active .user-type-title').textContent;
-
-            if (userType === 'Administrator') {
-                window.location.href = 'admin-dashboard.html';
-            } else {
-                window.location.href = 'employee-dashboard.html';
-            }
-        }
-    </script>
 </body>
 
 </html>

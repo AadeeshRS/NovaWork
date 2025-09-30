@@ -7,6 +7,20 @@
     <title>Reports - Admin Dashboard | NovaWork</title>
     <link rel="stylesheet" href="styles/base.css">
     <style>
+        .generate-report-btn {
+            background: #667eea;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .generate-report-btn:hover {
+            background: #764ba2;
+        }
         body {
             background: #f7fafc;
         }
@@ -149,6 +163,7 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Reports List</h3>
+                <button class="generate-report-btn">+ Generate Report</button>
             </div>
             <div class="reports-list">
                 <div class="report-item">
@@ -165,6 +180,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <footer class="footer">
         <div class="container">
