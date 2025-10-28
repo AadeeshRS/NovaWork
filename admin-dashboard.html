@@ -20,16 +20,33 @@
         .admin-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 2rem 0;
+            padding: 3rem 0 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .admin-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.05)"/></svg>');
+            opacity: 0.3;
         }
 
         .admin-title {
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
         }
 
-        .admin-subtitle {
+        .admin-header p {
+            position: relative;
+            z-index: 1;
             opacity: 0.9;
             font-size: 1.125rem;
         }
@@ -65,11 +82,49 @@
             background: #f0f4ff;
         }
 
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .quick-stat {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .quick-stat:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .quick-stat-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 0.5rem;
+        }
+
+        .quick-stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a202c;
+        }
+
         .admin-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .admin-section {
@@ -78,10 +133,16 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             border: 1px solid #e2e8f0;
             overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .admin-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
 
         .section-header {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            background: linear-gradient(to right, #f8fafc, white);
             padding: 1.5rem;
             border-bottom: 1px solid #e2e8f0;
         }
@@ -112,6 +173,10 @@
             margin-bottom: 1rem;
         }
 
+        .action-item:last-child {
+            margin-bottom: 0;
+        }
+
         .action-link {
             display: flex;
             align-items: center;
@@ -139,7 +204,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             font-size: 1.125rem;
         }
@@ -158,44 +223,26 @@
             color: #6b7280;
         }
 
-        .quick-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .quick-stat {
-            text-align: center;
-            padding: 1rem;
-            background: #f8fafc;
-            border-radius: 8px;
-            border: 1px solid #e2e8f0;
-        }
-
-        .quick-stat-number {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #667eea;
-            margin-bottom: 0.25rem;
-        }
-
-        .quick-stat-label {
-            font-size: 0.875rem;
-            color: #6b7280;
-        }
-
-        .data-table {
+        .recent-employees,
+        .pending-tasks {
             background: white;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             border: 1px solid #e2e8f0;
-            overflow: hidden;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .recent-employees:hover,
+        .pending-tasks:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
 
         .table-header {
             padding: 1.5rem;
             border-bottom: 1px solid #e2e8f0;
+            background: linear-gradient(to right, #f8fafc, white);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -213,41 +260,33 @@
         }
 
         .table-btn {
-            padding: 0.5rem 1rem;
+            padding: 0.625rem 1.25rem;
             border: 1px solid #e2e8f0;
-            border-radius: 6px;
+            border-radius: 8px;
             background: white;
-            color: #374151;
+            color: #667eea;
             text-decoration: none;
             font-size: 0.875rem;
-            font-weight: 500;
+            font-weight: 600;
             transition: all 0.3s ease;
         }
 
         .table-btn:hover {
-            background: #f8fafc;
+            background: #f0f4ff;
             border-color: #667eea;
-            color: #667eea;
+            transform: translateY(-1px);
         }
 
         .table-btn.primary {
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border-color: #667eea;
+            box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
         }
 
         .table-btn.primary:hover {
-            background: #5a67d8;
-            border-color: #5a67d8;
-        }
-
-        .recent-employees,
-        .pending-tasks {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e2e8f0;
-            margin-bottom: 2rem;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
         }
 
         .employee-item,
@@ -255,8 +294,14 @@
             padding: 1.5rem;
             border-bottom: 1px solid #f1f5f9;
             display: flex;
-            justify-content: between;
+            justify-content: space-between;
             align-items: center;
+            transition: background 0.2s ease;
+        }
+
+        .employee-item:hover,
+        .task-item:hover {
+            background: #f8fafc;
         }
 
         .employee-item:last-child,
@@ -279,15 +324,15 @@
 
         .employee-position,
         .task-desc {
-            font-size: 1rem;
+            font-size: 0.875rem;
             color: #6b7280;
         }
 
         .employee-status,
         .task-status {
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
+            padding: 0.375rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
             font-weight: 600;
         }
 
@@ -297,7 +342,7 @@
         }
 
         .status-pending {
-            background: #fef3c7;
+            background: #fed7aa;
             color: #92400e;
         }
 
@@ -322,11 +367,12 @@
             .table-header {
                 flex-direction: column;
                 gap: 1rem;
-                align-items: stretch;
+                align-items: flex-start;
             }
 
             .table-actions {
-                justify-content: center;
+                width: 100%;
+                justify-content: flex-start;
             }
         }
     </style>
@@ -359,11 +405,11 @@
     <nav class="admin-nav">
         <div class="container">
             <ul>
-                <li><a href="admin-dashboard.html" class="active">Overview</a></li>
+                <li><a href="admin-dashboard.html" class="active">Dashboard</a></li>
                 <li><a href="admin-employees.html">Employees</a></li>
                 <li><a href="admin-departments.html">Departments</a></li>
-                <li><a href="admin-payroll.html">Payroll</a></li>
                 <li><a href="admin-attendance.html">Attendance</a></li>
+                <li><a href="admin-payroll.html">Payroll</a></li>
                 <li><a href="admin-reports.html">Reports</a></li>
             </ul>
         </div>
@@ -373,20 +419,24 @@
 
         <section class="quick-stats">
             <div class="quick-stat">
+                <div class="stat-icon">👥</div>
+                <div class="stat-label">Total Employees</div>
                 <div class="quick-stat-number">1,247</div>
-                <div class="quick-stat-label">Total Employees</div>
             </div>
             <div class="quick-stat">
-                <div class="quick-stat-number">24</div>
-                <div class="quick-stat-label">Departments</div>
+                <div class="stat-icon">🏢</div>
+                <div class="stat-label">Departments</div>
+                <div class="quick-stat-number">8</div>
             </div>
             <div class="quick-stat">
+                <div class="stat-icon">⏳</div>
+                <div class="stat-label">Pending Reviews</div>
                 <div class="quick-stat-number">15</div>
-                <div class="quick-stat-label">Pending Reviews</div>
             </div>
             <div class="quick-stat">
-                <div class="quick-stat-number">₹20L</div>
-                <div class="quick-stat-label">Monthly Payroll</div>
+                <div class="stat-icon">💰</div>
+                <div class="stat-label">Monthly Payroll</div>
+                <div class="quick-stat-number">₹2.45 Cr</div>
             </div>
         </section>
 
@@ -401,8 +451,8 @@
                 <div class="section-content">
                     <ul class="action-list">
                         <li class="action-item">
-                            <a href="" class="action-link">
-                                <div class="action-icon">➕</div>
+                            <a href="admin-employees.html" class="action-link">
+                                <div class="action-icon">+</div>
                                 <div class="action-text">
                                     <div class="action-title">Add New Employee</div>
                                     <div class="action-desc">Register a new employee in the system</div>
@@ -410,7 +460,7 @@
                             </a>
                         </li>
                         <li class="action-item">
-                            <a href="" class="action-link">
+                            <a href="admin-employees.html" class="action-link">
                                 <div class="action-icon">👥</div>
                                 <div class="action-text">
                                     <div class="action-title">View All Employees</div>
@@ -419,7 +469,7 @@
                             </a>
                         </li>
                         <li class="action-item">
-                            <a href="" class="action-link">
+                            <a href="admin-employees.html" class="action-link">
                                 <div class="action-icon">🔍</div>
                                 <div class="action-text">
                                     <div class="action-title">Search Employees</div>
@@ -440,7 +490,7 @@
                 <div class="section-content">
                     <ul class="action-list">
                         <li class="action-item">
-                            <a href="" class="action-link">
+                            <a href="admin-payroll.html" class="action-link">
                                 <div class="action-icon">💰</div>
                                 <div class="action-text">
                                     <div class="action-title">Calculate Salaries</div>
@@ -449,7 +499,7 @@
                             </a>
                         </li>
                         <li class="action-item">
-                            <a href="" class="action-link">
+                            <a href="admin-payroll.html" class="action-link">
                                 <div class="action-icon">📋</div>
                                 <div class="action-text">
                                     <div class="action-title">Payroll Management</div>
@@ -458,8 +508,8 @@
                             </a>
                         </li>
                         <li class="action-item">
-                            <a href="" class="action-link">
-                                <div class="action-icon">📉</div>
+                            <a href="admin-payroll.html" class="action-link">
+                                <div class="action-icon">%</div>
                                 <div class="action-text">
                                     <div class="action-title">Manage Deductions</div>
                                     <div class="action-desc">Set up salary deductions and benefits</div>
@@ -479,7 +529,7 @@
                 <div class="section-content">
                     <ul class="action-list">
                         <li class="action-item">
-                            <a href="" class="action-link">
+                            <a href="admin-attendance.html" class="action-link">
                                 <div class="action-icon">📊</div>
                                 <div class="action-text">
                                     <div class="action-title">Attendance Records</div>
@@ -488,8 +538,8 @@
                             </a>
                         </li>
                         <li class="action-item">
-                            <a href="" class="action-link">
-                                <div class="action-icon">📝</div>
+                            <a href="admin-attendance.html" class="action-link">
+                                <div class="action-icon">✓</div>
                                 <div class="action-text">
                                     <div class="action-title">Record Attendance</div>
                                     <div class="action-desc">Manually add attendance records</div>
@@ -497,7 +547,7 @@
                             </a>
                         </li>
                         <li class="action-item">
-                            <a href="" class="action-link">
+                            <a href="admin-attendance.html" class="action-link">
                                 <div class="action-icon">📈</div>
                                 <div class="action-text">
                                     <div class="action-title">Attendance Reports</div>
@@ -518,7 +568,7 @@
                 <div class="section-content">
                     <ul class="action-list">
                         <li class="action-item">
-                            <a href="" class="action-link">
+                            <a href="admin-reports.html" class="action-link">
                                 <div class="action-icon">📊</div>
                                 <div class="action-text">
                                     <div class="action-title">All Reports</div>
@@ -527,8 +577,8 @@
                             </a>
                         </li>
                         <li class="action-item">
-                            <a href="" class="action-link">
-                                <div class="action-icon">💵</div>
+                            <a href="admin-reports.html" class="action-link">
+                                <div class="action-icon">₹</div>
                                 <div class="action-text">
                                     <div class="action-title">Salary Reports</div>
                                     <div class="action-desc">Generate salary and payroll reports</div>
@@ -536,7 +586,7 @@
                             </a>
                         </li>
                         <li class="action-item">
-                            <a href="" class="action-link">
+                            <a href="admin-reports.html" class="action-link">
                                 <div class="action-icon">📈</div>
                                 <div class="action-text">
                                     <div class="action-title">Analytics Dashboard</div>
@@ -554,8 +604,8 @@
             <div class="table-header">
                 <h3 class="table-title">Recently Added Employees</h3>
                 <div class="table-actions">
-                    <a href="" class="table-btn">View All</a>
-                    <a href="" class="table-btn primary">Add New</a>
+                    <a href="admin-employees.html" class="table-btn">View All</a>
+                    <a href="admin-employees.html" class="table-btn primary">Add New</a>
                 </div>
             </div>
             <div class="employee-item">
@@ -591,15 +641,15 @@
             </div>
             <div class="task-item">
                 <div class="task-info">
-                    <div class="task-title">Process March Payroll</div>
-                    <div class="task-desc">Calculate and process salaries for March 2025</div>
+                    <div class="task-title">Process October Payroll</div>
+                    <div class="task-desc">Calculate and process salaries for October 2025</div>
                 </div>
                 <div class="task-status status-urgent">Urgent</div>
             </div>
             <div class="task-item">
                 <div class="task-info">
                     <div class="task-title">Review Attendance Records</div>
-                    <div class="task-desc">Verify attendance data for Q1 2025</div>
+                    <div class="task-desc">Verify attendance data for Q4 2025</div>
                 </div>
                 <div class="task-status status-pending">Pending</div>
             </div>

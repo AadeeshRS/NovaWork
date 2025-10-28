@@ -20,13 +20,35 @@
         .admin-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 2rem 0;
+            padding: 3rem 0 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .admin-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.05)"/></svg>');
+            opacity: 0.3;
         }
 
         .admin-title {
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .admin-header p {
+            position: relative;
+            z-index: 1;
+            opacity: 0.9;
+            font-size: 1.125rem;
         }
 
         .admin-nav {
@@ -42,6 +64,7 @@
             gap: 2rem;
             margin: 0;
             padding: 0;
+            flex-wrap: wrap;
         }
 
         .admin-nav a {
@@ -59,23 +82,81 @@
             background: #f0f4ff;
         }
 
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-box {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            color: #6b7280;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
         .card {
             background: white;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             border: 1px solid #e2e8f0;
             margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
 
         .card-header {
             padding: 1.5rem;
             border-bottom: 1px solid #e2e8f0;
+            background: linear-gradient(to right, #f8fafc, white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .card-title {
             font-size: 1.25rem;
             font-weight: 600;
             color: #1a202c;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-title::before {
+            content: '📋';
+            font-size: 1.5rem;
         }
 
         .attendance-table {
@@ -85,7 +166,7 @@
 
         .attendance-table th,
         .attendance-table td {
-            padding: 1rem;
+            padding: 1.25rem;
             font-size: 1rem;
             border-bottom: 1px solid #f1f5f9;
             text-align: left;
@@ -94,25 +175,84 @@
         .attendance-table th {
             background: #f0f4ff;
             color: #667eea;
+            font-weight: 600;
+        }
+
+        .attendance-table tbody tr {
+            transition: background 0.2s ease;
+        }
+
+        .attendance-table tbody tr:hover {
+            background: #f8fafc;
         }
 
         .attendance-table tr:last-child td {
             border-bottom: none;
         }
 
-        .add-btn {
-            background: #667eea;
-            color: white;
-            padding: 0.5rem 1rem;
+        .status-badge {
+            padding: 0.375rem 0.75rem;
             border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .status-present {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .status-absent {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .add-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.625rem 1.5rem;
+            border-radius: 8px;
             border: none;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .add-btn:hover {
-            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .action-btn {
+            padding: 0.375rem 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            background: white;
+            color: #667eea;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .action-btn:hover {
+            background: #f0f4ff;
+            border-color: #667eea;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .admin-nav ul {
+                gap: 1rem;
+            }
         }
     </style>
 </head>
@@ -133,54 +273,108 @@
     <section class="admin-header">
         <div class="container">
             <h1 class="admin-title">Attendance Management</h1>
-            <p>Track and manage employee attendance records.</p>
+            <p>Track and manage employee attendance records</p>
         </div>
     </section>
     <nav class="admin-nav">
         <div class="container">
             <ul>
-                <li><a href="admin-dashboard.html">Overview</a></li>
+                <li><a href="admin-dashboard.html">Dashboard</a></li>
                 <li><a href="admin-employees.html">Employees</a></li>
                 <li><a href="admin-departments.html">Departments</a></li>
-                <li><a href="admin-payroll.html">Payroll</a></li>
                 <li><a href="admin-attendance.html" class="active">Attendance</a></li>
+                <li><a href="admin-payroll.html">Payroll</a></li>
                 <li><a href="admin-reports.html">Reports</a></li>
             </ul>
         </div>
     </nav>
     <div class="container">
+
+        <section class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-icon">✅</div>
+                <div class="stat-number">856</div>
+                <div class="stat-label">Present Today</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon">❌</div>
+                <div class="stat-number" style="color: #dc2626;">45</div>
+                <div class="stat-label">Absent Today</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon">⏰</div>
+                <div class="stat-number" style="color: #ea580c;">23</div>
+                <div class="stat-label">Late Arrivals</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon">📊</div>
+                <div class="stat-number" style="color: #059669;">95%</div>
+                <div class="stat-label">Attendance Rate</div>
+            </div>
+        </section>
+
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Attendance Records</h3>
-                <button class="add-btn">+ Add Record</button>
+                <h3 class="card-title">Attendance Records - October 27, 2025</h3>
+                <button class="add-btn">➕ Add Record</button>
             </div>
             <table class="attendance-table">
                 <thead>
                     <tr>
                         <th>Employee Name</th>
-                        <th>Date</th>
+                        <th>Employee ID</th>
+                        <th>Department</th>
+                        <th>Check In</th>
+                        <th>Check Out</th>
                         <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Priya Sharma</td>
-                        <td>2025-09-27</td>
-                        <td>Present</td>
-                        <td><button class="add-btn">Edit</button></td>
+                        <td><strong>Priya Sharma</strong></td>
+                        <td>EMP-101</td>
+                        <td>Human Resources</td>
+                        <td>9:00 AM</td>
+                        <td>6:00 PM</td>
+                        <td><span class="status-badge status-present">Present</span></td>
+                        <td><button class="action-btn">✏️ Edit</button></td>
                     </tr>
                     <tr>
-                        <td>Ravi Kumar</td>
-                        <td>2025-09-27</td>
-                        <td>Absent</td>
-                        <td><button class="add-btn">Edit</button></td>
+                        <td><strong>Ravi Kumar</strong></td>
+                        <td>EMP-102</td>
+                        <td>Finance</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td><span class="status-badge status-absent">Absent</span></td>
+                        <td><button class="action-btn">✏️ Edit</button></td>
                     </tr>
                     <tr>
-                        <td>Neha Singh</td>
-                        <td>2025-09-27</td>
-                        <td>Present</td>
-                        <td><button class="add-btn">Edit</button></td>
+                        <td><strong>Neha Singh</strong></td>
+                        <td>EMP-103</td>
+                        <td>IT Department</td>
+                        <td>8:55 AM</td>
+                        <td>6:10 PM</td>
+                        <td><span class="status-badge status-present">Present</span></td>
+                        <td><button class="action-btn">✏️ Edit</button></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Amit Patel</strong></td>
+                        <td>EMP-104</td>
+                        <td>IT Department</td>
+                        <td>9:02 AM</td>
+                        <td>6:05 PM</td>
+                        <td><span class="status-badge status-present">Present</span></td>
+                        <td><button class="action-btn">✏️ Edit</button></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kavita Desai</strong></td>
+                        <td>EMP-105</td>
+                        <td>Marketing</td>
+                        <td>9:15 AM</td>
+                        <td>6:00 PM</td>
+                        <td><span class="status-badge status-present">Present</span></td>
+                        <td><button class="action-btn">✏️ Edit</button></td>
                     </tr>
                 </tbody>
             </table>
