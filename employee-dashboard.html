@@ -802,52 +802,40 @@
     </footer>
 
     <script>
-        // ============================================
-        // JAVASCRIPT USING OOP CONCEPTS - EMPLOYEE DASHBOARD
-        // ============================================
-
-        // Define Employee Class (similar to Student class from reference)
         class Employee {
-            // Static property to keep track of total employees
             static employeeCount = 0;
 
-            // Constructor - called when creating new Employee object
-            // Similar to: constructor(name, m1, m2, m3) in Student class
             constructor(name, id, department, designation, salary, joiningDate) {
                 this.name = name;
                 this.id = id;
                 this.department = department;
                 this.designation = designation;
                 this.salary = salary;
-                this.joiningDate = new Date(joiningDate); // Convert string to Date object
+                this.joiningDate = new Date(joiningDate);
                 this.presentDays = 22;
                 this.annualLeave = 18;
                 this.sickLeave = 8;
                 this.casualLeave = 5;
-                Employee.employeeCount++; // Increment static counter
+                Employee.employeeCount++;
             }
 
-            // Method to calculate total years of service
-            // Similar to result() method in Student class
             calculateYearsOfService() {
                 const today = new Date();
                 const years = today.getFullYear() - this.joiningDate.getFullYear();
                 return years;
             }
 
-            // Method to calculate performance rating based on attendance
+
             calculatePerformance() {
                 const attendanceRate = (this.presentDays / 22) * 100;
                 return Math.round(attendanceRate);
             }
 
-            // Method to calculate total available leaves
             getTotalLeaves() {
                 return this.annualLeave + this.sickLeave + this.casualLeave;
             }
 
-            // Method to display employee stats
-            // Similar to disp() method in Student class
+
             displayStats() {
                 const statsSection = document.getElementById('statsSection');
 
@@ -878,7 +866,6 @@
                 `;
             }
 
-            // Method to display leave balance
             displayLeaveBalance() {
                 const leaveSection = document.getElementById('leaveSection');
 
@@ -901,7 +888,6 @@
                 `;
             }
 
-            // Method to display all employee dashboard data
             displayDashboard() {
                 this.displayStats();
                 this.displayLeaveBalance();
@@ -917,11 +903,6 @@
             }
         }
 
-        // ============================================
-        // CREATE EMPLOYEE OBJECTS AND DISPLAY DATA
-        // ============================================
-
-        // Create employee object (similar to: let ob = new Student("Amit", 10,10,20))
         let currentEmployee = new Employee(
             "Rohit Sharma",
             "EMP001",
@@ -931,27 +912,19 @@
             "2020-03-15"
         );
 
-        // You can create multiple employee objects if needed
         let employee2 = new Employee("Priya Singh", "EMP002", "Finance", "Analyst", 65000, "2021-06-20");
         let employee3 = new Employee("Amit Kumar", "EMP003", "HR", "Manager", 70000, "2019-11-10");
 
-        // Create an array of employees (similar to: let obj_arr = [ob, ob1, ob2])
         let employeeArray = [currentEmployee, employee2, employee3];
 
-        // Display the current employee's dashboard
         currentEmployee.displayDashboard();
 
-        // Log total employee count (static property)
         console.log(`Total Employees in System: ${Employee.employeeCount}`);
 
-        // ============================================
-        // PRINT ARRAY OF EMPLOYEES IN CONSOLE
-        // ============================================
         console.log("EMPLOYEE ARRAY - ALL EMPLOYEES IN SYSTEM");
-        console.log(employeeArray); // Print the full array of employee objects
+        console.log(employeeArray);
 
         console.log("Employee Array Details ");
-        // Loop through array and print each employee's details
         employeeArray.forEach((emp, index) => {
             console.log(`\nEmployee ${index + 1}:`);
             console.log({
@@ -967,7 +940,7 @@
             });
         });
 
-        
+
     </script>
 </body>
 

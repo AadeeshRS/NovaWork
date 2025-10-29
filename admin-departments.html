@@ -295,7 +295,7 @@
     </nav>
     <div class="container">
         <div class="dept-grid" id="departmentsGrid">
-            <!-- Department cards will be populated by JSON -->
+
         </div>
 
         <div class="card">
@@ -316,7 +316,7 @@
                     </tr>
                 </thead>
                 <tbody id="departmentsTable">
-                    <!-- Table rows will be populated by JSON -->
+
                 </tbody>
             </table>
         </div>
@@ -328,39 +328,31 @@
     </footer>
 
     <script>
-        // ============================================
-        // JAVASCRIPT USING JSON - DEPARTMENTS PAGE
-        // ============================================
 
-        // Async function to load and display department data from JSON
-        // This is similar to the updateJSONPage() function from your class reference
         async function updateDepartmentsPage() {
-            // Step 1: Create a request object pointing to our JSON file
+
             let request = new Request("json/departments.json");
 
-            // Step 2: Fetch the data from the JSON file (async operation)
+
             let response = await fetch(request);
 
-            // Step 3: Convert the response to a JSON object we can use
             let jsonobj = await response.json();
 
-            // Step 4: Log the JSON to console to verify it's working
             console.log("Loaded JSON Data:", JSON.stringify(jsonobj));
 
-            // Step 5: Call functions to update different parts of the page
             updateHeader(jsonobj);
             updateDepartmentCards(jsonobj);
             updateDepartmentTable(jsonobj);
         }
 
-        // Function to update the header section with data from JSON
+
         function updateHeader(jsonobj) {
             let headerSection = document.getElementById("headerSection");
 
-            // Access the totalDepartments value from JSON
+
             let totalDepts = jsonobj.totalDepartments;
 
-            // Update the header HTML
+
             headerSection.innerHTML = `
                 <div class="container">
                     <h1 class="admin-title">Department Management</h1>
@@ -369,26 +361,18 @@
             `;
         }
 
-        // Function to create department cards from JSON data
-        // This is similar to how you created articles in the class reference
         function updateDepartmentCards(jsonobj) {
-            // Get the container where cards will be added
             let departmentsGrid = document.getElementById("departmentsGrid");
-            departmentsGrid.innerHTML = ''; // Clear any existing content
+            departmentsGrid.innerHTML = '';
 
-            // Get the departments array from JSON
-            // This is like accessing jsonobj["branches"] in your class reference
+
             let departments = jsonobj.departments;
 
-            // Loop through each department in the array
-            // This is like: for(let branch of branches)
+
             for (let dept of departments) {
-                // Create a div element for each department card
+
                 let deptCard = document.createElement("div");
                 deptCard.className = "dept-card";
-
-                // Set the HTML content using data from the current department
-                // We access properties using dept.deptIcon, dept.deptName, etc.
                 deptCard.innerHTML = `
                     <div class="dept-icon">${dept.deptIcon}</div>
                     <div class="dept-name">${dept.deptName}</div>
@@ -409,26 +393,22 @@
                     </div>
                 `;
 
-                // Add the card to the grid
                 departmentsGrid.appendChild(deptCard);
             }
         }
 
-        // Function to populate the table with department data
         function updateDepartmentTable(jsonobj) {
-            // Get the table body element
             let tableBody = document.getElementById("departmentsTable");
-            tableBody.innerHTML = ''; // Clear existing content
+            tableBody.innerHTML = '';
 
-            // Get departments array from JSON
             let departments = jsonobj.departments;
 
-            // Loop through each department
+
             for (let dept of departments) {
-                // Create a table row for each department
+
                 let row = document.createElement("tr");
 
-                // Set the row HTML with department data
+
                 row.innerHTML = `
                     <td>${dept.deptId}</td>
                     <td>${dept.deptName}</td>
@@ -439,13 +419,11 @@
                     <td><button class="action-btn">View Details</button></td>
                 `;
 
-                // Add the row to the table body
+
                 tableBody.appendChild(row);
             }
         }
 
-        // Call the main function to load and display all data
-        // This runs when the page loads
         updateDepartmentsPage();
     </script>
 </body>

@@ -461,7 +461,6 @@
                         </tr>
                     </thead>
                     <tbody id="employeesTable">
-                        <!-- Employee rows will be populated by JSON -->
                     </tbody>
                     <tr>
                         <td>
@@ -630,52 +629,42 @@
     </footer>
 
     <script>
-        // ============================================
-        // JAVASCRIPT USING JSON - EMPLOYEES PAGE  
-        // ============================================
 
-        // Async function to load employee data from JSON file
         async function updateEmployeesPage() {
-            // Step 1: Create request object to point to JSON file
-            let request = new Request("json/employees.json");
 
-            // Step 2: Fetch the data (async operation - waits for file to load)
+            let request = new Request("json/employees.json");
             let response = await fetch(request);
 
-            // Step 3: Convert response to JSON object
             let jsonobj = await response.json();
 
-            // Step 4: Verify JSON loaded correctly
             console.log("Loaded Employees JSON:", JSON.stringify(jsonobj));
 
-            // Step 5: Call function to populate the table
+
             updateEmployeeTable(jsonobj);
         }
 
-        // Function to populate employee table with JSON data
-        function updateEmployeeTable(jsonobj) {
-            // Get the table body element
-            let tableBody = document.getElementById("employeesTable");
-            tableBody.innerHTML = ''; // Clear existing rows
 
-            // Get the employees array from JSON
-            // This is like: let branches = jsonobj["branches"];
+        function updateEmployeeTable(jsonobj) {
+
+            let tableBody = document.getElementById("employeesTable");
+            tableBody.innerHTML = '';
+
+
             let employees = jsonobj.employees;
 
-            // Loop through each employee in the array
-            // This is like: for(let branch of branches)
+
             for (let emp of employees) {
-                // Create a table row element for each employee
+
                 let row = document.createElement("tr");
 
-                // Create initials for avatar (first letter of first and last name)
+
                 let nameParts = emp.name.split(' ');
                 let initials = nameParts[0][0] + (nameParts[1] ? nameParts[1][0] : '');
 
-                // Format the salary with commas
+
                 let formattedSalary = emp.salary.toLocaleString();
 
-                // Format the date
+
                 let date = new Date(emp.joiningDate);
                 let formattedDate = date.toLocaleDateString('en-IN', {
                     year: 'numeric',
@@ -683,11 +672,9 @@
                     day: '2-digit'
                 });
 
-                // Determine status badge class
+
                 let statusClass = emp.status === 'Active' ? 'status-active' : 'status-inactive';
 
-                // Set the HTML content for the row
-                // We're accessing emp.name, emp.id, emp.department, etc.
                 row.innerHTML = `
                     <td>
                         <div class="employee-info">
@@ -712,12 +699,10 @@
                     </td>
                 `;
 
-                // Add the row to the table body
                 tableBody.appendChild(row);
             }
         }
 
-        // Call the function when page loads
         updateEmployeesPage();
     </script>
 </body>
