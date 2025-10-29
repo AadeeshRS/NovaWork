@@ -19,7 +19,7 @@
             "designation": "Financial Analyst",
             "salary": 65000,
             "joiningDate": "2021-06-20",
-            "status": "Active"
+            "status": "Inactive"
         },
         {
             "id": "EMP003",
@@ -46,7 +46,7 @@
             "designation": "Operations Manager",
             "salary": 75000,
             "joiningDate": "2020-08-12",
-            "status": "Active"
+            "status": "Inactive"
         },
         {
             "id": "EMP006",
