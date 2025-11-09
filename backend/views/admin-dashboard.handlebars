@@ -545,7 +545,7 @@
         <div class="table-header">
             <h3 class="table-title">Recently Added Employees</h3>
             <div class="table-actions">
-                <a href="/admin-employees.html" class="table-btn">View All</a>
+                <a href="/admin-employees" class="table-btn">View All</a>
                 <button onclick="showAddEmployeeModal()" class="table-btn primary">Add New</button>
             </div>
         </div>
@@ -632,7 +632,7 @@
             <div class="table-header">
                 <h3 class="table-title">Recently Added Employees (${allEmployees.length} total)</h3>
                 <div class="table-actions">
-                    <a href="/admin-employees.html" class="table-btn">View All</a>
+                    <a href="/admin-employees" class="table-btn">View All</a>
                     <button onclick="showAddEmployeeModal()" class="table-btn primary">Add New</button>
                 </div>
             </div>
@@ -641,7 +641,7 @@
     }
 
     function showAddEmployeeModal() {
-        window.location.href = '/admin-employees.html';
+        window.location.href = '/admin-employees';
     }
 
     document.addEventListener('DOMContentLoaded', loadDashboardData);
