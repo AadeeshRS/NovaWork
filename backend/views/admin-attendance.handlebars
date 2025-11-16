@@ -410,7 +410,7 @@
     </section>
     {{> admin-nav}}
     <div class="container">
-        <!-- Filters Section -->
+       
         <div class="filters">
             <div class="filter-row">
                 <div class="form-group" style="margin-bottom: 0;">
@@ -487,7 +487,7 @@
         </div>
     </div>
 
-    <!-- View Attendance Modal -->
+    
     <div id="viewAttendanceModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -498,7 +498,7 @@
         </div>
     </div>
 
-    <!-- Add/Edit Attendance Modal -->
+    
     <div id="attendanceFormModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -555,7 +555,7 @@
         let allAttendance = [];
         let allEmployees = [];
 
-        // Load attendance page
+        
         async function updateAttendancePage() {
             try {
                 const [attendanceRes, employeesRes] = await Promise.all([
@@ -566,7 +566,7 @@
                 allAttendance = attendanceRes || [];
                 allEmployees = employeesRes || [];
 
-                // Apply filters
+               
                 let filteredAttendance = [...allAttendance];
                 const filterEmployee = document.getElementById('filterEmployee').value;
                 const filterDate = document.getElementById('filterDate').value;
@@ -595,7 +595,7 @@
             }
         }
 
-        // Update statistics
+       
         function updateStats(attendanceList) {
             const today = new Date().toISOString().split('T')[0];
             const todayAttendance = attendanceList.filter(a => {
@@ -615,7 +615,7 @@
             document.getElementById('attendanceRate').textContent = attendanceRate + '%';
         }
 
-        // Update attendance table
+        
         function updateAttendanceTable(attendanceList) {
             const tbody = document.getElementById('attendanceTableBody');
 
@@ -652,21 +652,21 @@
             }).join('');
         }
 
-        // Populate employee dropdown
+        
         function populateEmployeeDropdown() {
             const select = document.getElementById('employeeId');
             select.innerHTML = '<option value="">Select Employee</option>' +
                 allEmployees.map(emp => `<option value="${emp._id}">${emp.name} (${emp.employeeId})</option>`).join('');
         }
 
-        // Populate filter dropdown
+        
         function populateFilterDropdown() {
             const select = document.getElementById('filterEmployee');
             select.innerHTML = '<option value="">All Employees</option>' +
                 allEmployees.map(emp => `<option value="${emp._id}">${emp.name}</option>`).join('');
         }
 
-        // View attendance
+        
         function viewAttendance(id) {
             const record = allAttendance.find(a => a._id === id);
             if (!record) return;
@@ -714,7 +714,7 @@
             document.getElementById('viewAttendanceModal').style.display = 'block';
         }
 
-        // Show add attendance modal
+        
         function showAddAttendanceModal() {
             document.getElementById('formModalTitle').textContent = '➕ Add Attendance Record';
             document.getElementById('attendanceForm').reset();
@@ -724,7 +724,7 @@
             document.getElementById('attendanceFormModal').style.display = 'block';
         }
 
-        // Edit attendance
+        
         function editAttendance(id) {
             const record = allAttendance.find(a => a._id === id);
             if (!record) return;
@@ -741,7 +741,7 @@
             document.getElementById('attendanceFormModal').style.display = 'block';
         }
 
-        // Submit attendance form
+        
         async function submitAttendanceForm(event) {
             event.preventDefault();
 
@@ -772,7 +772,7 @@
             }
         }
 
-        // Delete attendance
+       
         async function deleteAttendance(id) {
             if (!confirm('Are you sure you want to delete this attendance record?')) {
                 return;
@@ -788,24 +788,24 @@
             }
         }
 
-        // Close modal
+    
         function closeModal(modalId) {
             document.getElementById(modalId).style.display = 'none';
         }
 
-        // Show error
+        
         function showError(message) {
             alert(message);
         }
 
-        // Close modal when clicking outside
+        
         window.onclick = function (event) {
             if (event.target.classList.contains('modal')) {
                 event.target.style.display = 'none';
             }
         }
 
-        // Initialize page
+        
         document.addEventListener('DOMContentLoaded', updateAttendancePage);
     </script>
 

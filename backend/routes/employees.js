@@ -4,7 +4,7 @@ const Employee = require('../models/Employee');
 const { isAuthenticated, isEmployee } = require('../middleware/auth');
 const bcrypt = require('bcryptjs');
 
-// GET /api/employees/me - Get current logged-in employee's data
+
 router.get('/me', isAuthenticated, isEmployee, async (req, res) => {
     try {
         const employee = await Employee.findById(req.session.userId).select('-password');
@@ -27,7 +27,7 @@ router.get('/me', isAuthenticated, isEmployee, async (req, res) => {
     }
 });
 
-// PUT /api/employees/me - Update current logged-in employee's profile
+
 router.put('/me', isAuthenticated, isEmployee, async (req, res) => {
     try {
         const { name, email, phone, address } = req.body;
@@ -66,7 +66,7 @@ router.put('/me', isAuthenticated, isEmployee, async (req, res) => {
     }
 });
 
-// POST /api/employees/change-password - Change password for logged-in employee
+
 router.post('/change-password', isAuthenticated, isEmployee, async (req, res) => {
     try {
         const { currentPassword, newPassword } = req.body;

@@ -521,7 +521,7 @@
 
         async function loadEmployeeData() {
             try {
-                // Fetch only the current logged-in employee's data
+                
                 const response = await fetch('/api/employees/me');
                 const result = await response.json();
                 
@@ -540,8 +540,7 @@
         }
 
         function updateEmployeeHeader() {
-            // Header is already rendered by Handlebars with session data
-            // No need to update it here
+            
             console.log('Header already rendered with session data');
         }
 
@@ -572,7 +571,7 @@
                 return;
             }
 
-            // Get latest payroll
+            
             const sortedRecords = [...payrollRecords].sort((a, b) => {
                 const dateA = new Date(a.year, a.month - 1);
                 const dateB = new Date(b.year, b.month - 1);
@@ -681,16 +680,16 @@
             const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
                 'July', 'August', 'September', 'October', 'November', 'December'];
 
-            // Sort records by date (newest first)
+           
             const sortedRecords = [...payrollRecords].sort((a, b) => {
                 return new Date(b.paymentDate || 0) - new Date(a.paymentDate || 0);
             });
 
             payslipContent.innerHTML = sortedRecords.map(record => {
-                // Handle both string and number month formats
+                
                 let monthDisplay;
                 if (typeof record.month === 'string') {
-                    monthDisplay = record.month; // Already a string like "September"
+                    monthDisplay = record.month; 
                 } else if (typeof record.month === 'number') {
                     monthDisplay = monthNames[record.month - 1] || 'Unknown';
                 } else {
@@ -727,7 +726,7 @@
             const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
                 'July', 'August', 'September', 'October', 'November', 'December'];
 
-            // Handle both string and number month formats
+         
             let monthDisplay;
             if (typeof payslip.month === 'string') {
                 monthDisplay = payslip.month;
@@ -745,7 +744,6 @@
             modal.id = 'payslipModal';
             modal.style.cssText = 'position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000;';
 
-            // Close modal when clicking on background
             modal.addEventListener('click', function (e) {
                 if (e.target === modal) {
                     modal.remove();

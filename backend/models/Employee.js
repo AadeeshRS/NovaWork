@@ -67,9 +67,9 @@ const employeeSchema = new mongoose.Schema({
     timestamps: true
 });
 
-// Hash password before saving
+
 employeeSchema.pre('save', async function (next) {
-    // Only hash the password if it has been modified (or is new)
+    
     if (!this.isModified('password')) {
         return next();
     }

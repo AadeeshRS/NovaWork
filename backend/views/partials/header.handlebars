@@ -14,18 +14,18 @@
 </nav>
 
 <script>
-    // Check login status on page load
+    
     async function checkLoginStatus() {
         try {
             const response = await fetch('/api/auth/check');
             const data = await response.json();
             
             if (data.loggedIn) {
-                // User is logged in - show logout, hide login
+                
                 document.getElementById('loginLink').style.display = 'none';
                 document.getElementById('logoutLink').style.display = 'block';
             } else {
-                // User is not logged in - show login, hide logout
+                
                 document.getElementById('loginLink').style.display = 'block';
                 document.getElementById('logoutLink').style.display = 'none';
             }
@@ -34,7 +34,7 @@
         }
     }
     
-    // Logout function
+  
     async function handleLogout(event) {
         event.preventDefault();
         
@@ -59,6 +59,6 @@
         }
     }
     
-    // Check status when page loads
+    
     checkLoginStatus();
 </script>

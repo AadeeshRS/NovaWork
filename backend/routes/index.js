@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { isAuthenticated, isAdmin, isEmployee } = require('../middleware/auth');
 
-// Static pages (no authentication required)
+
 router.get('/', (req, res) => {
     res.render('home', {
         title: 'Home - NovaWork',
@@ -31,7 +31,6 @@ router.get('/login', (req, res) => {
     });
 });
 
-// Admin pages (require admin role)
 router.get('/admin-dashboard', isAuthenticated, isAdmin, (req, res) => {
     res.render('admin-dashboard', {
         title: 'Admin Dashboard - NovaWork',
@@ -87,7 +86,7 @@ router.get('/admin-reports', isAuthenticated, isAdmin, (req, res) => {
     });
 });
 
-// Employee pages (require employee role)
+
 router.get('/employee-dashboard', isAuthenticated, isEmployee, (req, res) => {
     res.render('employee-dashboard', {
         title: 'Employee Dashboard - NovaWork',

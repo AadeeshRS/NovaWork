@@ -3,12 +3,11 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const Employee = require('../models/Employee');
 
-// POST /api/auth/login - Login endpoint
+
 router.post('/login', async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        // Validate input
         if (!email || !password) {
             return res.status(400).json({
                 success: false,
@@ -16,7 +15,6 @@ router.post('/login', async (req, res) => {
             });
         }
 
-        // Find employee by email
         const employee = await Employee.findOne({ email: email.toLowerCase() });
 
         if (!employee) {
@@ -26,7 +24,6 @@ router.post('/login', async (req, res) => {
             });
         }
 
-        // Compare password
         const isMatch = await bcrypt.compare(password, employee.password);
 
         if (!isMatch) {
@@ -36,12 +33,12 @@ router.post('/login', async (req, res) => {
             });
         }
 
-        // Create session
+       
         req.session.userId = employee._id;
         req.session.employeeId = employee.employeeId;
         req.session.name = employee.name;
         req.session.email = employee.email;
-        req.session.role = employee.role || 'employee'; // 'admin' or 'employee'
+        req.session.role = employee.role || 'employee'; 
         req.session.department = employee.department;
         req.session.position = employee.position;
 
@@ -68,7 +65,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
-// POST /api/auth/logout - Logout endpoint
+
 router.post('/logout', (req, res) => {
     req.session.destroy((err) => {
         if (err) {
@@ -84,7 +81,7 @@ router.post('/logout', (req, res) => {
     });
 });
 
-// GET /api/auth/check - Check if user is logged in
+
 router.get('/check', (req, res) => {
     if (req.session.userId) {
         res.json({

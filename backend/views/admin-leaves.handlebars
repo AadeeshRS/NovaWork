@@ -563,7 +563,7 @@
         </div>
     </div>
 
-    <!-- Leave Details Modal -->
+   
     <div id="leaveModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -672,7 +672,7 @@
             document.getElementById('rejectedCount').textContent = rejected;
             document.getElementById('totalCount').textContent = total;
 
-            // Update percentages
+            
             const approvedPercent = total > 0 ? Math.round((approved / total) * 100) : 0;
             const rejectedPercent = total > 0 ? Math.round((rejected / total) * 100) : 0;
             document.getElementById('approvedPercent').textContent = `${approvedPercent}% of total`;
@@ -762,7 +762,7 @@
             document.getElementById('modalAppliedDate').value = new Date(leave.appliedDate).toLocaleDateString();
             document.getElementById('modalStatus').value = leave.status.toUpperCase();
 
-            // Show/hide sections based on status
+           
             const approvalSection = document.getElementById('approvalSection');
             const rejectionSection = document.getElementById('rejectionSection');
             const actionButtons = document.getElementById('actionButtons');
@@ -849,7 +849,7 @@
             }
         }
 
-        // Modal controls
+       
         document.querySelector('.close').onclick = function () {
             document.getElementById('leaveModal').style.display = 'none';
         };
@@ -861,11 +861,11 @@
             }
         };
 
-        // Event listeners
+        
         document.getElementById('statusFilter').addEventListener('change', filterLeaves);
         document.getElementById('typeFilter').addEventListener('change', filterLeaves);
 
-        // Load data on page load
+        
         loadLeaves();
     </script>
 

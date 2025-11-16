@@ -267,7 +267,7 @@
         const password = document.getElementById('password').value;
         const loginBtn = document.querySelector('.login-btn');
         
-        // Disable button and show loading
+     
         loginBtn.disabled = true;
         loginBtn.textContent = 'Signing in...';
         
@@ -283,14 +283,14 @@
             const data = await response.json();
             
             if (data.success) {
-                // Redirect based on user role
+                
                 if (data.user.role === 'admin') {
                     window.location.href = '/admin-dashboard';
                 } else {
                     window.location.href = '/employee-dashboard';
                 }
             } else {
-                // Show error message
+                
                 alert(data.message || 'Invalid email or password');
                 loginBtn.disabled = false;
                 loginBtn.textContent = 'Sign In';

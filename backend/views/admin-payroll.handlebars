@@ -465,7 +465,7 @@
         </div>
     </div>
 
-    <!-- View Payroll Modal -->
+    
     <div id="viewPayrollModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -476,7 +476,7 @@
         </div>
     </div>
 
-    <!-- Add/Edit Payroll Modal -->
+    
     <div id="payrollFormModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -573,7 +573,7 @@
         let allPayroll = [];
         let allEmployees = [];
 
-        // Load payroll page
+        
         async function updatePayrollPage() {
             try {
                 const [payrollRes, employeesRes] = await Promise.all([
@@ -593,7 +593,7 @@
             }
         }
 
-        // Update statistics
+        
         function updateStats() {
             const totalPayroll = allPayroll.reduce((sum, p) => sum + p.netSalary, 0);
             const paidRecords = allPayroll.filter(p => p.status === 'paid').length;
@@ -608,7 +608,7 @@
             document.getElementById('paidPercent').textContent = `${paidPercent}% of total`;
         }
 
-        // Update payroll table
+        
         function updatePayrollTable() {
             const tbody = document.getElementById('payrollTableBody');
 
@@ -645,14 +645,14 @@
             }).join('');
         }
 
-        // Populate employee dropdown
+        
         function populateEmployeeDropdown() {
             const select = document.getElementById('employeeId');
             select.innerHTML = '<option value="">Select Employee</option>' +
                 allEmployees.map(emp => `<option value="${emp._id}" data-salary="${emp.salary}">${emp.name} (${emp.employeeId})</option>`).join('');
         }
 
-        // Load employee salary
+        
         function loadEmployeeSalary() {
             const select = document.getElementById('employeeId');
             const selectedOption = select.options[select.selectedIndex];
@@ -662,7 +662,7 @@
             }
         }
 
-        // Calculate net salary
+        
         function calculateNetSalary() {
             const baseSalary = parseFloat(document.getElementById('baseSalary').value) || 0;
             const allowances = parseFloat(document.getElementById('allowances').value) || 0;
@@ -674,7 +674,7 @@
             document.getElementById('netSalary').value = netSalary.toFixed(2);
         }
 
-        // View payroll
+        
         function viewPayroll(id) {
             const record = allPayroll.find(p => p._id === id);
             if (!record) return;
@@ -753,12 +753,12 @@
             document.getElementById('viewPayrollModal').style.display = 'block';
         }
 
-        // Show add payroll modal
+       
         function showAddPayrollModal() {
             document.getElementById('formModalTitle').textContent = '➕ Process Payroll';
             document.getElementById('payrollForm').reset();
             document.getElementById('payrollId').value = '';
-            // Set current month and year
+           
             const now = new Date();
             const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
             document.getElementById('month').value = months[now.getMonth()];
@@ -766,7 +766,7 @@
             document.getElementById('payrollFormModal').style.display = 'block';
         }
 
-        // Edit payroll
+      
         function editPayroll(id) {
             const record = allPayroll.find(p => p._id === id);
             if (!record) return;
@@ -788,7 +788,7 @@
             document.getElementById('payrollFormModal').style.display = 'block';
         }
 
-        // Submit payroll form
+    
         async function submitPayrollForm(event) {
             event.preventDefault();
 
@@ -824,7 +824,7 @@
             }
         }
 
-        // Delete payroll
+       
         async function deletePayroll(id) {
             if (!confirm('Are you sure you want to delete this payroll record?')) {
                 return;
@@ -840,24 +840,23 @@
             }
         }
 
-        // Close modal
+
         function closeModal(modalId) {
             document.getElementById(modalId).style.display = 'none';
         }
 
-        // Show error
+       
         function showError(message) {
             alert(message);
         }
 
-        // Close modal when clicking outside
         window.onclick = function (event) {
             if (event.target.classList.contains('modal')) {
                 event.target.style.display = 'none';
             }
         }
 
-        // Initialize page
+        
         document.addEventListener('DOMContentLoaded', updatePayrollPage);
     </script>
 

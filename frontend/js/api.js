@@ -19,8 +19,7 @@ class API {
                 throw new Error(result.message || 'API request failed');
             }
 
-            // If the response has a 'data' property, return just the data
-            // Otherwise return the whole result (for single item responses)
+          
             return result.data !== undefined ? result.data : result;
         } catch (error) {
             console.error('API Error:', error);

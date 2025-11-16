@@ -485,7 +485,7 @@
 
         async function loadEmployeeData() {
             try {
-                // Fetch only the current logged-in employee's data
+               
                 const response = await fetch('/api/employees/me');
                 const result = await response.json();
                 
@@ -505,14 +505,13 @@
         }
 
         function updateEmployeeHeader() {
-            // Header is already rendered by Handlebars with session data
-            // No need to update it here
+           
             console.log('Header already rendered with session data');
         }
 
         async function loadLeaveRequests() {
             try {
-                // Load from MongoDB
+               
                 leaveRequests = await api.getLeavesByEmployee(loggedInEmployeeId);
                 updateLeaveBalance();
                 displayLeaveRequests();
@@ -525,7 +524,7 @@
         }
 
         function updateLeaveBalance() {
-            // Calculate leave balance based on requests
+          
             const approved = leaveRequests.filter(r => r.status === 'approved');
             const annualUsed = approved.filter(r => r.leaveType === 'annual').reduce((sum, r) => sum + r.days, 0);
             const sickUsed = approved.filter(r => r.leaveType === 'sick').reduce((sum, r) => sum + r.days, 0);
@@ -572,7 +571,7 @@
                 return;
             }
 
-            // Sort by date (newest first)
+            
             const sorted = [...leaveRequests].sort((a, b) => new Date(b.appliedDate) - new Date(a.appliedDate));
 
             leaveContent.innerHTML = sorted.map(request => {
@@ -609,7 +608,7 @@
             }).join('');
         }
 
-        // Handle form submission
+        
         document.querySelector('.apply-leave-btn').addEventListener('click', async function () {
             const form = document.querySelector('.apply-leave-form');
             const leaveType = form.querySelector('select').value;
@@ -622,7 +621,7 @@
                 return;
             }
 
-            // Calculate number of days
+            
             const from = new Date(startDate);
             const to = new Date(endDate);
             const days = Math.ceil((to - from) / (1000 * 60 * 60 * 24)) + 1;
@@ -633,7 +632,7 @@
             }
 
             try {
-                // Create new leave request in MongoDB
+               
                 const newRequest = {
                     employee: loggedInEmployeeId,
                     leaveType,
@@ -646,10 +645,10 @@
 
                 await api.createLeave(newRequest);
 
-                // Reset form
+                
                 form.reset();
 
-                // Reload leave requests
+                
                 await loadLeaveRequests();
 
                 alert('Leave request submitted successfully!');
@@ -659,7 +658,7 @@
             }
         });
 
-        // Initialize
+       
         loadEmployeeData();
     </script>
 

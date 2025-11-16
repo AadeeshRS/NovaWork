@@ -1,4 +1,3 @@
-// Middleware to check if user is logged in
 const isAuthenticated = (req, res, next) => {
     if (req.session && req.session.userId) {
         return next();
@@ -6,7 +5,7 @@ const isAuthenticated = (req, res, next) => {
     res.redirect('/login');
 };
 
-// Middleware to check if user is admin
+
 const isAdmin = (req, res, next) => {
     if (req.session && req.session.userId && req.session.role === 'admin') {
         return next();
@@ -18,7 +17,7 @@ const isAdmin = (req, res, next) => {
     });
 };
 
-// Middleware to check if user is employee
+
 const isEmployee = (req, res, next) => {
     if (req.session && req.session.userId && req.session.role === 'employee') {
         return next();

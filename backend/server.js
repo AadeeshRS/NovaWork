@@ -9,13 +9,13 @@ const PORT = process.env.PORT || 3000;
 
 connectDB();
 
-// Session configuration
+
 app.use(session({
     secret: 'novawork-secret-key-2025',
     resave: false,
     saveUninitialized: false,
     cookie: {
-        maxAge: 1000 * 60 * 60 * 24 // 24 hours
+        maxAge: 1000 * 60 * 60 * 24 
     }
 }));
 
@@ -76,5 +76,4 @@ app.use((req, res) => {
 
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
-    console.log(`Static files served from: ${path.join(__dirname, '../frontend')}`);
 });

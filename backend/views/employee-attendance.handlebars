@@ -508,7 +508,7 @@
 
         async function loadEmployeeData() {
             try {
-                // Fetch only the current logged-in employee's data
+               
                 const response = await fetch('/api/employees/me');
                 const result = await response.json();
                 
@@ -527,8 +527,7 @@
         }
 
         function updateEmployeeHeader() {
-            // Header is already rendered by Handlebars with session data
-            // No need to update it here
+            
             console.log('Header already rendered with session data');
         }
 
@@ -539,7 +538,7 @@
                     return;
                 }
 
-                // Get all attendance records for this employee
+                
                 const allRecords = await api.getAttendanceByEmployee(loggedInEmployeeId);
                 attendanceRecords = Array.isArray(allRecords) ? allRecords : [];
 
@@ -558,7 +557,7 @@
             const currentMonth = now.getMonth();
             const currentYear = now.getFullYear();
 
-            // Filter records for current month
+            
             const monthRecords = attendanceRecords.filter(record => {
                 const recordDate = new Date(record.date);
                 return recordDate.getMonth() === currentMonth &&
@@ -582,7 +581,7 @@
             const recentSection = document.querySelector('.recent-attendance');
             const header = recentSection.querySelector('.attendance-header');
 
-            // Clear existing records
+           
             recentSection.innerHTML = '';
             recentSection.appendChild(header);
 
@@ -596,7 +595,7 @@
                 return;
             }
 
-            // Sort by date descending and take first 10
+            
             const sortedRecords = [...attendanceRecords]
                 .sort((a, b) => new Date(b.date) - new Date(a.date))
                 .slice(0, 10);
@@ -638,43 +637,43 @@
             const currentMonth = now.getMonth();
             const currentYear = now.getFullYear();
 
-            // Update calendar header
+            
             const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
                 'July', 'August', 'September', 'October', 'November', 'December'];
             document.querySelector('.calendar-header').textContent =
                 `${monthNames[currentMonth]} ${currentYear} Attendance Calendar`;
 
-            // Get first day of month and total days
+            
             const firstDay = new Date(currentYear, currentMonth, 1).getDay();
             const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-            // Create calendar grid
+           
             const calendarGrid = document.querySelector('.calendar-grid');
 
-            // Keep header row
+           
             const headers = Array.from(calendarGrid.querySelectorAll('.calendar-day.header'));
             calendarGrid.innerHTML = '';
             headers.forEach(h => calendarGrid.appendChild(h));
 
-            // Add empty cells for days before month starts
+            
             for (let i = 0; i < firstDay; i++) {
                 const emptyDay = document.createElement('div');
                 emptyDay.className = 'calendar-day weekend';
                 calendarGrid.appendChild(emptyDay);
             }
 
-            // Add days of month
+            
             for (let day = 1; day <= daysInMonth; day++) {
                 const dayDiv = document.createElement('div');
                 const dayDate = new Date(currentYear, currentMonth, day);
                 const dayOfWeek = dayDate.getDay();
 
-                // Check if weekend
+               
                 if (dayOfWeek === 0 || dayOfWeek === 6) {
                     dayDiv.className = 'calendar-day weekend';
                     dayDiv.textContent = day;
                 } else {
-                    // Check attendance status for this day
+                   
                     const record = attendanceRecords.find(r => {
                         const recordDate = new Date(r.date);
                         return recordDate.getDate() === day &&
@@ -694,7 +693,7 @@
             }
         }
 
-        // Initialize page
+       
         async function init() {
             await loadEmployeeData();
             await loadAttendanceData();

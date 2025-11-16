@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Leave = require('../models/Leave');
 
-// Get all leave requests
+
 router.get('/', async (req, res) => {
     try {
         const leaves = await Leave.find()
@@ -22,7 +22,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Get leave requests by employee
 router.get('/employee/:employeeId', async (req, res) => {
     try {
         const leaves = await Leave.find({
@@ -44,7 +43,7 @@ router.get('/employee/:employeeId', async (req, res) => {
     }
 });
 
-// Get leave requests by status
+
 router.get('/status/:status', async (req, res) => {
     try {
         const leaves = await Leave.find({
@@ -66,7 +65,6 @@ router.get('/status/:status', async (req, res) => {
     }
 });
 
-// Get single leave request
 router.get('/:id', async (req, res) => {
     try {
         const leave = await Leave.findById(req.params.id).populate('employee');
@@ -89,7 +87,6 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// Create leave request
 router.post('/', async (req, res) => {
     try {
         const leave = new Leave(req.body);
@@ -109,7 +106,6 @@ router.post('/', async (req, res) => {
     }
 });
 
-// Update leave request (approve/reject)
 router.put('/:id', async (req, res) => {
     try {
         const leave = await Leave.findByIdAndUpdate(
@@ -137,7 +133,6 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-// Delete leave request
 router.delete('/:id', async (req, res) => {
     try {
         const leave = await Leave.findByIdAndDelete(req.params.id);

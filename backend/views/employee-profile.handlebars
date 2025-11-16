@@ -320,7 +320,7 @@
             }
         }
 
-        /* Modal Styles */
+       
         .modal {
             display: none;
             position: fixed;
@@ -547,7 +547,7 @@
         </div>
     </div>
 
-    <!-- Edit Profile Modal -->
+    
     <div id="editProfileModal" class="modal">
         <div class="modal-content">
             <span class="modal-close">&times;</span>
@@ -574,7 +574,7 @@
         </div>
     </div>
 
-    <!-- Change Password Modal -->
+    
     <div id="changePasswordModal" class="modal">
         <div class="modal-content">
             <span class="modal-close">&times;</span>
@@ -604,7 +604,7 @@
 
         async function loadEmployeeData() {
             try {
-                // Fetch only the current logged-in employee's data
+               
                 const response = await fetch('/api/employees/me');
                 const result = await response.json();
                 
@@ -623,10 +623,6 @@
         function updateProfile() {
             if (!currentEmployee) return;
 
-            // Header is already rendered by Handlebars with session data
-            // No need to update avatar and employee-details here
-
-            // Calculate years of service
             const joinDate = new Date(currentEmployee.joinDate);
             const today = new Date();
             const yearsOfService = ((today - joinDate) / (1000 * 60 * 60 * 24 * 365)).toFixed(1);
@@ -650,7 +646,7 @@
                 </div>
             `;
 
-            // Update Personal Information
+          
             const personalInfo = document.querySelectorAll('.profile-card')[0];
             const personalContent = personalInfo.querySelector('.profile-content');
             personalContent.innerHTML = `
@@ -676,7 +672,7 @@
                 </div>
             `;
 
-            // Update Employment Details
+         
             const employmentInfo = document.querySelectorAll('.profile-card')[1];
             const employmentContent = employmentInfo.querySelector('.profile-content');
             const joinDateFormatted = new Date(currentEmployee.joinDate).toLocaleDateString('en-US', {
@@ -709,14 +705,14 @@
             `;
         }
 
-        // Modal handling
+      
         const editProfileModal = document.getElementById('editProfileModal');
         const changePasswordModal = document.getElementById('changePasswordModal');
         const editProfileBtn = document.getElementById('editProfileBtn');
         const changePasswordBtn = document.getElementById('changePasswordBtn');
         const closeBtns = document.querySelectorAll('.modal-close');
 
-        // Open Edit Profile Modal
+       
         editProfileBtn.addEventListener('click', (e) => {
             e.preventDefault();
             if (currentEmployee) {
@@ -728,13 +724,12 @@
             }
         });
 
-        // Open Change Password Modal
         changePasswordBtn.addEventListener('click', (e) => {
             e.preventDefault();
             changePasswordModal.style.display = 'block';
         });
 
-        // Close modals
+        
         closeBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 editProfileModal.style.display = 'none';
@@ -742,7 +737,7 @@
             });
         });
 
-        // Close modal when clicking outside
+       
         window.addEventListener('click', (e) => {
             if (e.target === editProfileModal) {
                 editProfileModal.style.display = 'none';
@@ -752,7 +747,7 @@
             }
         });
 
-        // Handle Edit Profile Form Submission
+       
         document.getElementById('editProfileForm').addEventListener('submit', async (e) => {
             e.preventDefault();
 
@@ -775,7 +770,6 @@
                 if (result.success) {
                     alert('Profile updated successfully!');
                     editProfileModal.style.display = 'none';
-                    // Reload employee data
                     await loadEmployeeData();
                 } else {
                     alert('Error: ' + result.message);
@@ -786,7 +780,7 @@
             }
         });
 
-        // Handle Change Password Form Submission
+        
         document.getElementById('changePasswordForm').addEventListener('submit', async (e) => {
             e.preventDefault();
 
@@ -818,7 +812,7 @@
                 if (result.success) {
                     alert('Password changed successfully!');
                     changePasswordModal.style.display = 'none';
-                    // Clear form
+                   
                     document.getElementById('changePasswordForm').reset();
                 } else {
                     alert('Error: ' + result.message);
@@ -829,7 +823,6 @@
             }
         });
 
-        // Initialize
         loadEmployeeData();
     </script>
 

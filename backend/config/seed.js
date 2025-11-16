@@ -63,7 +63,7 @@ const seedData = async () => {
             status: emp.status
         }));
 
-        // Add an admin user
+        
         const adminUser = {
             employeeId: 'ADMIN001',
             name: 'Admin User',
@@ -81,7 +81,7 @@ const seedData = async () => {
 
         employees.push(adminUser);
 
-        // Insert employees one by one to trigger password hashing
+        
         const insertedEmployees = [];
         for (const empData of employees) {
             const employee = new Employee(empData);

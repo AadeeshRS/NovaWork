@@ -431,19 +431,17 @@
 </section>
 
 <script>
-    // Contact form submission handler
+    
     document.querySelector('.contact-form').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Get form values
         const firstName = document.getElementById('firstName').value;
         const lastName = document.getElementById('lastName').value;
         const email = document.getElementById('email').value;
         
-        // Show success message
         alert(`Thank you, ${firstName} ${lastName}! Your message has been received. We'll get back to you at ${email} soon.`);
         
-        // Reset the form
+        
         this.reset();
     });
 </script>
